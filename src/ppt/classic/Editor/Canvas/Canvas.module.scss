@@ -1,0 +1,47 @@
+/* Canvas.module.scss */
+.canvas {
+  height: 100%;
+  user-select: none;
+  overflow: hidden;
+  background-color: $lightGray;
+  position: relative;
+}
+
+.drag-mask {
+  cursor: grab;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.viewport-wrapper {
+  position: absolute;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.01), 0 0 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+
+.operates {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.hover-outline {
+  position: absolute;
+  border: 2px dashed rgba(46, 125, 255, 0.8);
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.canvas-annotate {
+  // overflow: auto;
+}

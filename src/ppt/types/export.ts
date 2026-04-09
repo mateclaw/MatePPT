@@ -1,0 +1,1 @@
+export type DialogForExportTypes = 'pdf' | 'pptx' | 'html' | ''

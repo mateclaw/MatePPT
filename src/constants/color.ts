@@ -1,0 +1,2 @@
+export const colorList1 = ['volcano', '', 'blue', 'cyan', 'orange', 'purple', 'green', 'magenta',]
+export const colorList2 = ['volcano', 'orange', 'blue', 'purple', 'purple', 'gold', 'red', 'magenta',]

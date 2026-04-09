@@ -1,0 +1,190 @@
+.aippt-dialog {
+  margin: -20px;
+  padding: 30px;
+}
+
+.input {
+  width: 100%;
+}
+
+.header {
+  margin-bottom: 12px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  margin-right: 8px;
+  background: linear-gradient(270deg, #d897fd, #33bcfc);
+  background-clip: text;
+  color: transparent;
+  vertical-align: text-bottom;
+  line-height: 1.1;
+}
+
+.subtite {
+  color: #888;
+  font-size: 12px;
+}
+
+.preview {
+  pre {
+    max-height: 450px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f1f1f1;
+    overflow: auto;
+  }
+}
+
+.outline-view {
+  max-height: 450px;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: #f1f1f1;
+  overflow: auto;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 120px;
+  margin: 0 5px;
+}
+
+.select-template {
+  .templates {
+    display: flex;
+    margin-bottom: 10px;
+    @include flex-grid-layout();
+  }
+}
+
+.templates {
+  .template {
+    border: 2px solid $borderColor;
+    border-radius: $borderRadius;
+    width: 324px;
+    height: 184px;
+    margin-bottom: 12px;
+
+    &:not(:nth-child(2n)) {
+      margin-right: 12px;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.selected {
+  border-color: $themeColor;
+}
+
+.recommends {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.recommend {
+  font-size: 12px;
+  background-color: #f1f1f1;
+  border-radius: $borderRadius;
+  padding: 3px 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+
+  &:hover {
+    color: $themeColor;
+  }
+}
+
+.configs {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.config-item {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.label {}
+.config-content {}
+
+.count {
+  font-size: 12px;
+  color: #999;
+  margin-right: 10px;
+}
+
+.submit {
+  height: 20px;
+  font-size: 12px;
+  background-color: $themeColor;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 6px;
+  border-radius: $borderRadius;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $themeHoverColor;
+  }
+}
+
+.icon {
+  font-size: 15px;
+  margin-right: 3px;
+}
+
+@media screen and (width <= 800px) {
+  .configs {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .config-item {
+    margin-top: 8px;
+
+    .label {
+      flex-shrink: 0;
+    }
+
+    .config-content {
+      width: 100% !important;
+    }
+  }
+
+  .select-template {
+    .templates {
+      max-height: 450px;
+      display: block;
+      overflow: auto;
+    }
+  }
+
+  .templates {
+    .template {
+      width: 100%;
+      height: unset;
+      margin-bottom: 0 !important;
+      margin-right: 0 !important;
+
+      & + .template {
+        margin-top: 20px;
+      }
+    }
+  }
+}

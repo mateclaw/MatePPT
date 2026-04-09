@@ -1,0 +1,67 @@
+.moveable-panel {
+  position: fixed;
+  background-color: #fff;
+  box-shadow: $boxShadow;
+  border: 1px solid $borderColor;
+  border-radius: $borderRadius;
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+}
+
+.resizer {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: se-resize;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    transform: rotate(45deg);
+    transform-origin: center;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-left-color: #e1e1e1;
+  }
+}
+
+.header {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: move;
+}
+
+.title {
+  flex: 1;
+  font-size: 13px;
+  padding-left: 10px;
+}
+
+.close-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    color: $themeColor;
+  }
+}
+
+.content {
+  flex: 1;
+  padding: 10px;
+  overflow: auto;
+}

@@ -1,0 +1,21 @@
+/* ElementShadow.module.scss */
+.row {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label {
+  width: 40%;
+}
+
+.control {
+  width: 60%;
+}
+
+.switch-wrapper {
+  text-align: right;
+  width: 60%;
+}

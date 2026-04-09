@@ -1,0 +1,78 @@
+.staticTable {
+  position: relative;
+  user-select: none;
+}
+
+.table {
+  width: 100%;
+  position: relative;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 0;
+  word-wrap: break-word;
+  user-select: none;
+  --themeColor: #000;
+  --subThemeColor1: #000;
+  --subThemeColor2: #000;
+}
+
+.table.theme {
+  background-color: #fff;
+}
+
+.table.theme tr:nth-child(2n) .cell {
+  background-color: var(--subThemeColor1);
+}
+
+.table.theme tr:nth-child(2n + 1) .cell {
+  background-color: var(--subThemeColor2);
+}
+
+.table.theme.rowHeader tr:first-child .cell {
+  background-color: var(--themeColor);
+}
+
+.table.theme.rowFooter tr:last-child .cell {
+  background-color: var(--themeColor);
+}
+
+.table.theme.colHeader tr .cell:first-child {
+  background-color: var(--themeColor);
+}
+
+.table.theme.colFooter tr .cell:last-child {
+  background-color: var(--themeColor);
+}
+
+.cell {
+  position: relative;
+  white-space: normal;
+  word-wrap: break-word;
+  vertical-align: middle;
+  background-clip: padding-box;
+}
+
+.cellContent {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.cellText {
+  padding: 5px;
+  line-height: 1.5;
+  width: 100%;
+}
+
+.rowHeader {
+}
+
+.rowFooter {
+}
+
+.colHeader {
+}
+
+.colFooter {
+}

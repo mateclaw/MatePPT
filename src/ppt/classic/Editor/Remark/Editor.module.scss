@@ -1,0 +1,57 @@
+/* Editor.module.scss */
+.editor {
+  height: 100%;
+  overflow: auto;
+}
+
+.prosemirror-editor {
+  height: 100%;
+  cursor: text;
+}
+
+.prosemirror-editor :global(.ProseMirror) {
+  height: 100%;
+  font-size: 12px;
+  overflow: auto;
+  padding: 8px;
+  line-height: 1.5;
+}
+
+.prosemirror-editor :global(.ProseMirror > p[data-placeholder]::before) {
+  content: attr(data-placeholder);
+  pointer-events: none;
+  position: absolute;
+  font-size: 12px;
+  color: rgba(102, 102, 102, 0.5);
+}
+
+.menu {
+  display: flex;
+  background-color: #fff;
+  padding: 6px 4px;
+  border: 1px solid $borderColor;
+  box-shadow: $boxShadow;
+  border-radius: $borderRadius;
+}
+
+.btn {
+  outline: 0;
+  border: 0;
+  background-color: #fff;
+  padding: 3px;
+  border-radius: $borderRadius;
+  font-size: 16px;
+  margin: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn.active {
+  background-color: $themeColor;
+  color: #fff;
+}
+
+.active {}

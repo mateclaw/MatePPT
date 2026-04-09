@@ -1,0 +1,20 @@
+<svg width="900" height="540" viewBox="0 0 900 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="540" rx="24" fill="#F5F3FF"/>
+  <rect x="36" y="36" width="828" height="468" rx="20" fill="url(#g4)"/>
+  <rect x="88" y="86" width="392" height="60" rx="18" fill="white"/>
+  <rect x="88" y="168" width="280" height="18" rx="9" fill="white" fill-opacity="0.76"/>
+  <rect x="88" y="200" width="236" height="18" rx="9" fill="white" fill-opacity="0.54"/>
+  <path d="M564 360C564 282.68 626.68 220 704 220C781.32 220 844 282.68 844 360H564Z" fill="white" fill-opacity="0.2"/>
+  <circle cx="684" cy="252" r="44" fill="white" fill-opacity="0.9"/>
+  <rect x="88" y="292" width="420" height="132" rx="22" fill="white" fill-opacity="0.14"/>
+  <rect x="128" y="330" width="158" height="16" rx="8" fill="white" fill-opacity="0.78"/>
+  <rect x="128" y="362" width="238" height="16" rx="8" fill="white" fill-opacity="0.55"/>
+  <rect x="128" y="394" width="188" height="16" rx="8" fill="white" fill-opacity="0.4"/>
+  <text x="88" y="468" fill="white" font-family="Arial, sans-serif" font-size="28" font-weight="700">Example Slide 04</text>
+  <defs>
+    <linearGradient id="g4" x1="36" y1="36" x2="864" y2="504" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+</svg>

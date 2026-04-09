@@ -1,0 +1,26 @@
+.highlight {
+  position: absolute;
+  inset: -2px;
+  border: 1px solid var(--annotation-color, #1677ff);
+  border-radius: 0px;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.tag {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  transform: translateY(-100%);
+  max-width: 100%;
+  padding: 2px 8px;
+  border-radius: 0px;
+  background: var(--annotation-color, #1677ff);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

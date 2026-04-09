@@ -1,0 +1,71 @@
+// 覆盖样式，会在最后加载
+.ant-splitter .ant-splitter-panel {
+    padding: 0px;
+}
+
+.ant-splitter>.ant-splitter-bar .ant-splitter-bar-collapse-bar {
+    opacity: 1;
+}
+
+.ant-image {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.mate-tabs.ant-tabs .ant-tabs-tab {
+    min-width: 96px;
+    justify-content: center;
+}
+
+.no-bottom-border .ant-tabs-top>.ant-tabs-nav:before, .ant-tabs-bottom>.ant-tabs-nav:before, .ant-tabs-top>div>.ant-tabs-nav:before, .ant-tabs-bottom>div>.ant-tabs-nav:before {
+    display: none;
+}
+
+
+.TemplateInputPrefixWrapper {
+
+    background: none;
+    border-radius: 9px;
+    cursor: pointer;
+    display: inline-flex;
+    padding: 5px 6px;
+
+    &:hover {
+        background: rgba(78, 110, 242, .09);
+    }
+
+    .ant-tag-close-icon {
+        display: none;
+        position: absolute;
+        right: -7px;
+        top: -2px;
+        border: 1px solid ;
+        border-radius: 50%;
+        
+    }
+
+    &:hover .ant-tag-close-icon {
+        display: inline-flex;
+    }
+}
+
+.TemplateInputPrefix {
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(90deg, #2867fa, #873cff);
+    -webkit-background-clip: text;
+    color: transparent;
+    // font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+
+    // &:hover{
+    //     background: rgba(78, 110, 242, .09);;
+    // }
+
+
+
+
+}

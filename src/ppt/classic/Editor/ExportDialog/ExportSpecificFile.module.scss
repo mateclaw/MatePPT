@@ -1,0 +1,65 @@
+/* ExportSpecificFile.module.scss */
+.export-pptist-dialog {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.configs {
+  width: 350px;
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.title {
+  width: 100px;
+  position: relative;
+
+  &::after {
+    content: attr(data-range);
+    position: absolute;
+    top: 20px;
+    left: 0;
+  }
+}
+
+.config-item {
+  flex: 1;
+}
+
+.tip {
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.8;
+  margin-top: 25px;
+}
+
+.btns {
+  width: 300px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.export {
+  flex: 1;
+}
+
+.close {
+  width: 100px;
+  margin-left: 10px;
+}

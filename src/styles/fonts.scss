@@ -1,0 +1,148 @@
+@use 'sass:list';
+@use 'sass:map';
+
+$font-server-path: 'https://mateai.oss-cn-beijing.aliyuncs.com/aippt/front-fonts';
+
+$font-local-names: (
+  'DengXian': ('DengXian', '等线'),
+  'Microsoft YaHei': ('Microsoft YaHei', '微软雅黑', 'MicrosoftYaHei'),
+  'SimSun': ('SimSun', '宋体'),
+  'NSimSun': ('NSimSun', '新宋体'),
+  'SimHei': ('SimHei', '黑体'),
+  'KaiTi': ('KaiTi', '楷体'),
+  'FangSong': ('FangSong', '仿宋'),
+  'YouYuan': ('YouYuan', '幼圆'),
+  'PingFangSC': ('PingFang SC', '苹方 SC', 'PingFangSC'),
+  'SourceHanSansSC': ('Source Han Sans SC', '思源黑体 SC', 'SourceHanSansSC'),
+  'SourceHanSerifSC': ('Source Han Serif SC', '思源宋体 SC', 'SourceHanSerifSC'),
+  'Arial': ('Arial'),
+  'TimesNewRoman': ('Times New Roman', 'TimesNewRoman'),
+  'Calibri': ('Calibri'),
+  'Cambria': ('Cambria'),
+  'Verdana': ('Verdana'),
+  'Tahoma': ('Tahoma'),
+  'TrebuchetMS': ('Trebuchet MS', 'TrebuchetMS'),
+  'Georgia': ('Georgia'),
+  'CourierNew': ('Courier New', 'CourierNew'),
+  'SegoeUI': ('Segoe UI', 'SegoeUI'),
+  'SourceHanSans': ('SourceHanSans', '思源黑体'),
+  'SourceHanSerif': ('SourceHanSerif', '思源宋体'),
+  'FangZhengHeiTi': ('FangZhengHeiTi', '方正黑体'),
+  'FangZhengKaiTi': ('FangZhengKaiTi', '方正楷体'),
+  'FangZhengShuSong': ('FangZhengShuSong', '方正宋体'),
+  'FangZhengFangSong': ('FangZhengFangSong', '方正仿宋'),
+  'AlibabaPuHuiTi': ('AlibabaPuHuiTi', '阿里巴巴普惠体'),
+  'ZhuqueFangSong': ('ZhuqueFangSong', 'ZhuQueFangSong', '朱雀仿宋'),
+  'LXGWWenKai': ('LXGWWenKai', '霞鹜文楷'),
+  'WenDingPLKaiTi': ('WenDingPLKaiTi', '文鼎PL楷体'),
+  'DeYiHei': ('DeYiHei', '得意黑'),
+  'MiSans': ('MiSans'),
+  'CangerXiaowanzi': ('CangerXiaowanzi', '仓耳小丸子'),
+  'YousheTitleBlack': ('YousheTitleBlack', '优设标题黑'),
+  'FengguangMingrui': ('FengguangMingrui', '峰广明锐体'),
+  'ShetuModernSquare': ('ShetuModernSquare', '摄图摩登小方体'),
+  'ZcoolHappy': ('ZcoolHappy', '站酷快乐体'),
+  'ZizhiQuXiMai': ('ZizhiQuXiMai', '字制区喜脉体'),
+  'SucaiJishiKangkang': ('SucaiJishiKangkang', '素材集市康康体'),
+  'SucaiJishiCoolSquare': ('SucaiJishiCoolSquare', '素材集市酷方体'),
+  'TuniuRounded': ('TuniuRounded', '途牛类圆体'),
+  'RuiziZhenyan': ('RuiziZhenyan', '锐字真言体'),
+);
+
+$font-face-sources: (
+  ('DengXian', 300, 'DengXian_Light'),
+  ('DengXian', 400, 'DengXian_Regular'),
+  ('DengXian', 700, 'DengXian_Bold'),
+  ('Microsoft YaHei', 300, 'MicrosoftYaHei_Light'),
+  ('Microsoft YaHei', 400, 'MicrosoftYaHei_Regular'),
+  ('Microsoft YaHei', 700, 'MicrosoftYaHei_Bold'),
+  ('SimSun', 400, 'SimSun_Regular'),
+  ('SimSun', 700, 'SimSun_Bold'),
+  ('NSimSun', 400, 'NSimSun_Regular'),
+  ('SimHei', 400, 'SimHei_Regular'),
+  ('SimHei', 700, 'SimHei_Bold'),
+  ('KaiTi', 400, 'KaiTi_Regular'),
+  ('FangSong', 400, 'FangSong_Regular'),
+  ('YouYuan', 400, 'YouYuan_Regular'),
+  ('PingFangSC', 300, 'PingFangSC_Light'),
+  ('PingFangSC', 400, 'PingFangSC_Regular'),
+  ('PingFangSC', 500, 'PingFangSC_Medium'),
+  ('PingFangSC', 600, 'PingFangSC_Semibold'),
+  ('SourceHanSansSC', 400, 'SourceHanSansSC_Regular'),
+  ('SourceHanSansSC', 500, 'SourceHanSansSC_Medium'),
+  ('SourceHanSansSC', 700, 'SourceHanSansSC_Bold'),
+  ('SourceHanSerifSC', 400, 'SourceHanSerifSC_Regular'),
+  ('SourceHanSerifSC', 500, 'SourceHanSerifSC_Medium'),
+  ('SourceHanSerifSC', 700, 'SourceHanSerifSC_Bold'),
+  ('Arial', 400, 'Arial_Regular'),
+  ('Arial', 700, 'Arial_Bold'),
+  ('TimesNewRoman', 400, 'TimesNewRoman_Regular'),
+  ('TimesNewRoman', 700, 'TimesNewRoman_Bold'),
+  ('Calibri', 400, 'Calibri_Regular'),
+  ('Calibri', 700, 'Calibri_Bold'),
+  ('Cambria', 400, 'Cambria_Regular'),
+  ('Cambria', 700, 'Cambria_Bold'),
+  ('Verdana', 400, 'Verdana_Regular'),
+  ('Verdana', 700, 'Verdana_Bold'),
+  ('Tahoma', 400, 'Tahoma_Regular'),
+  ('Tahoma', 700, 'Tahoma_Bold'),
+  ('TrebuchetMS', 400, 'TrebuchetMS_Regular'),
+  ('TrebuchetMS', 700, 'TrebuchetMS_Bold'),
+  ('Georgia', 400, 'Georgia_Regular'),
+  ('Georgia', 700, 'Georgia_Bold'),
+  ('CourierNew', 400, 'CourierNew_Regular'),
+  ('CourierNew', 700, 'CourierNew_Bold'),
+  ('SegoeUI', 400, 'SegoeUI_Regular'),
+  ('SegoeUI', 700, 'SegoeUI_Bold'),
+  ('SourceHanSans', 400, 'SourceHanSans'),
+  ('SourceHanSerif', 400, 'SourceHanSerif'),
+  ('FangZhengHeiTi', 400, 'FangZhengHeiTi'),
+  ('FangZhengKaiTi', 400, 'FangZhengKaiTi'),
+  ('FangZhengShuSong', 400, 'FangZhengShuSong'),
+  ('FangZhengFangSong', 400, 'FangZhengFangSong'),
+  ('AlibabaPuHuiTi', 400, 'AlibabaPuHuiTi'),
+  ('ZhuqueFangSong', 400, 'ZhuQueFangSong'),
+  ('LXGWWenKai', 400, 'LXGWWenKai'),
+  ('WenDingPLKaiTi', 400, 'WenDingPLKaiTi'),
+  ('DeYiHei', 400, 'DeYiHei'),
+  ('MiSans', 400, 'MiSans'),
+  ('CangerXiaowanzi', 400, 'CangerXiaowanzi'),
+  ('YousheTitleBlack', 400, 'YousheTitleBlack'),
+  ('FengguangMingrui', 400, 'FengguangMingrui'),
+  ('ShetuModernSquare', 400, 'ShetuModernSquare'),
+  ('ZcoolHappy', 400, 'ZcoolHappy'),
+  ('ZizhiQuXiMai', 400, 'ZizhiQuXiMai'),
+  ('SucaiJishiKangkang', 400, 'SucaiJishiKangkang'),
+  ('SucaiJishiCoolSquare', 400, 'SucaiJishiCoolSquare'),
+  ('TuniuRounded', 400, 'TuniuRounded'),
+  ('RuiziZhenyan', 400, 'RuiziZhenyan'),
+);
+
+@mixin font-face($family, $weight, $file) {
+  $locals: map.get($font-local-names, $family);
+  $srcs: ();
+
+  @if $locals != null {
+    @each $local in $locals {
+      $srcs: list.append($srcs, unquote("local('#{$local}')"), comma);
+    }
+  }
+
+  $srcs: list.append(
+    $srcs,
+    unquote("url('#{$font-server-path}/#{$file}.woff2') format('woff2')"),
+    comma
+  );
+
+  @font-face {
+    font-display: swap;
+    font-family: #{$family};
+    src: $srcs;
+    font-weight: $weight;
+    font-style: normal;
+  }
+}
+
+@each $font in $font-face-sources {
+  @include font-face(nth($font, 1), nth($font, 2), nth($font, 3));
+}

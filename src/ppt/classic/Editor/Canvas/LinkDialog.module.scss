@@ -1,0 +1,25 @@
+/* LinkDialog.module.scss */
+.link-dialog {
+  font-size: 13px;
+  line-height: 1.675;
+}
+
+.input {
+  width: 100%;
+  height: 32px;
+}
+
+.preview {
+  margin-top: 12px;
+}
+
+.thumbnail {
+  border: 1px solid rgba($color: $themeColor, $alpha: 0.15);
+  margin-top: 5px;
+  border-radius: $borderRadius;
+}
+
+.btns {
+  margin-top: 20px;
+  text-align: right;
+}

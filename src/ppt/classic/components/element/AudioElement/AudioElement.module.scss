@@ -1,0 +1,26 @@
+.editableElementAudio {
+  position: absolute;
+}
+
+.lock {
+}
+
+.lock .audioIcon {
+  cursor: default;
+}
+
+.elementContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audioIcon {
+  cursor: move;
+}
+
+.audioPlayer {
+  position: absolute;
+}

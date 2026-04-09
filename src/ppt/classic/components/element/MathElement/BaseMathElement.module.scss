@@ -1,0 +1,18 @@
+.baseElementLatex {
+  position: absolute;
+}
+
+.rotateWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.elementContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.elementContent svg {
+  transform-origin: 0 0;
+}

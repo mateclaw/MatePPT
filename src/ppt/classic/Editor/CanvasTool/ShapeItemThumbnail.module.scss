@@ -1,0 +1,42 @@
+/* ShapeItemThumbnail.module.scss */
+.shape-item-thumbnail {
+  position: relative;
+  cursor: pointer;
+}
+
+.shape-content {
+  @include absolute-0();
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover .shape-path {
+    &:not(.outlined) {
+      stroke: $themeColor;
+    }
+
+    &.outlined {
+      fill: $themeColor;
+    }
+  }
+
+
+}
+
+.shape-path {}
+
+.outlined {}
+
+.no-hover {
+  .shape-content {
+    &:hover .shape-path {
+      &:not(.outlined) {
+        stroke: #999;
+      }
+
+      &.outlined {
+        fill: #999;
+      }
+    }
+  }
+}

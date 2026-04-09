@@ -1,0 +1,45 @@
+.modalPanel {
+
+
+    // position: fixed;
+    background: var(--ant-color-bg-container);
+    z-index: 999;
+    box-shadow: 0 8px 16px #00000003;
+    border: 1px solid #e7e6eb;
+    border-radius: 0;
+    position: relative;
+    height: 100%;
+    border-right: 0px;
+ 
+
+    .modalTitle {
+        font-weight: 600;
+        font-size: 14px;
+        color: #141414;
+        height: 46px;
+        display: flex;
+        padding-left: 16px;
+        align-items: center;
+        border-bottom: 1px solid #f3f2f5;
+    }
+
+    .closeIcon {
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3px;
+        position: absolute;
+        right: 16px;
+        top: 14px;
+        z-index: 1;
+    }
+
+    .modalContent {
+        height: calc(100% - 55px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        position: relative;
+        min-width: 280px;
+    }
+}

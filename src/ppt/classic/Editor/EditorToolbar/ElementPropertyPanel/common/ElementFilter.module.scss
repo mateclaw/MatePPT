@@ -1,0 +1,55 @@
+/* ElementFilter.module.scss */
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.switch-wrapper {
+  text-align: right;
+}
+
+.filter {
+  font-size: 12px;
+}
+
+.filter-item {
+  padding: 6px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name {
+  width: 60px;
+}
+
+.filter-slider {
+  flex: 1;
+  margin: 0 6px;
+}
+
+.presets {
+  margin-bottom: 5px;
+  @include flex-grid-layout();
+}
+
+.preset-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  @include flex-grid-layout-children(4, 23%);
+}
+
+.preset-item img {
+  max-width: 100%;
+  max-height: 120px;
+}
+
+.preset-label {
+  font-size: 12px;
+  color: #888;
+}

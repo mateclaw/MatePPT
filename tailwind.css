@@ -1,0 +1,12 @@
+@layer tailwind-base, antd;
+
+@layer tailwind-base {
+  @tailwind base;
+}
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+@theme{
+  --color-warning: #3ab7bf;
+}

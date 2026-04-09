@@ -1,0 +1,52 @@
+.ppt-editor {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-header {
+  height: 64px;
+  flex:none;
+
+  @media (max-width: 768px) {
+    height: 48px;
+  }
+}
+
+.layout-content {
+  flex:1;
+  overflow: hidden;
+  display: flex;
+}
+
+.layout-content-left {
+  width: 230px;
+  height: 100%;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.layout-content-center {
+  flex:1;
+}
+
+
+.center-top {
+  height: 40px;
+}
+
+.center-body {}
+.center-body-annotate {
+
+  overflow: auto;
+}
+.center-bottom {}
+
+.layout-content-right {
+  width: 260px;
+  height: 100%;
+}

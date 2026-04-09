@@ -1,0 +1,91 @@
+.symbol-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.emoji-types {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.emoji-type {
+  padding: 2px 4px;
+  text-align: center;
+  border-radius: 4px;
+  user-select: none;
+  flex-shrink: 0;
+  cursor: pointer;
+
+  & + .emoji-type {
+    margin-left: 4px;
+  }
+}
+
+.emoji-type-active {
+  color: $themeColor;
+  background-color: rgba($color: $themeColor, $alpha:.05);
+  font-weight: 700;
+}
+
+.pool {
+  padding: 5px 10px 0;
+  margin: 0 -10px;
+  flex: 1;
+  font-size: 18px;
+  user-select: none;
+  @include overflow-overlay();
+}
+
+.symbol-group {
+  @include flex-grid-layout();
+
+  & + .symbol-group {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+    margin-top: 8px;
+  }
+}
+
+.symbol-item {
+  @include flex-grid-layout-children(8, 12%);
+
+  height: 38px;
+  position: relative;
+  border: 1px solid $borderColor;
+  cursor: pointer;
+
+  &:hover {
+    color: $themeColor;
+    border-color: $themeColor;
+    transition: all $transitionDelay;
+  }
+}
+
+.symbol {
+  @include absolute-0();
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 8px;
+  right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    color: $themeColor;
+  }
+}

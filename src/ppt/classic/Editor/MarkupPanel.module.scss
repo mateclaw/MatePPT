@@ -1,0 +1,32 @@
+.notes-panel {
+  height: 100%;
+  font-size: 12px;
+  user-select: none;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  & + .row {
+    margin-top: 5px;
+  }
+}
+
+.placeholder {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  border: 1px dashed #ccc;
+  border-radius: $borderRadius;
+  margin-top: 5px;
+}

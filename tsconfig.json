@@ -1,0 +1,19 @@
+{
+  "extends": "./src/.umi/tsconfig.json",
+  // "include": [
+  //   "src/**/*.ts",
+  //   "src/**/*.less",
+  //   "src/**/*.webp",
+  //   "src/**/*.tsx",
+  //   "src/**/*.d.ts"
+  // ],
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    "strict": false,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}

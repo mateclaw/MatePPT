@@ -1,0 +1,47 @@
+.editableElementTable {
+  position: absolute;
+}
+
+.lock {
+}
+
+.lock .elementContent {
+  cursor: default;
+}
+
+.rotateWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.elementContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: move;
+}
+
+.tableMask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.maskTip {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 12px;
+  transform-origin: 0 0;
+}
+
+.tableMask:hover:not(.lock) {
+  opacity: 0.9;
+}

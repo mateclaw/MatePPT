@@ -1,0 +1,184 @@
+/* CanvasTool.module.scss */
+.canvas-tool {
+  position: relative;
+  border-bottom: 1px solid $borderColor;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  font-size: 13px;
+  user-select: none;
+}
+
+.left-handler,
+.more {
+  display: flex;
+  align-items: center;
+}
+
+.more-icon {
+  display: none;
+}
+
+.add-element-handler {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+}
+
+.handler-item {
+  height: 30px;
+  font-size: 14px;
+  margin: 0 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: $borderRadius;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.active {}
+
+.disable {
+  opacity: 0.5;
+}
+
+.group-btn {
+  width: auto;
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: #f3f3f3;
+  }
+}
+
+.icon,
+.arrow {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  width: 26px;
+  padding: 0 2px;
+
+  &:hover {
+    background-color: #e9e9e9;
+  }
+}
+
+.icon.active {
+  color: $themeColor;
+}
+
+.arrow {
+  font-size: 12px;
+
+  &:hover {
+    background-color: #e9e9e9;
+  }
+}
+
+.add-element-handler .handler-item {
+  width: 32px;
+}
+
+.add-element-handler .handler-item:not(.group-btn):hover {
+  background-color: #f1f1f1;
+}
+
+.add-element-handler .handler-item.active {
+  color: $themeColor;
+}
+
+.left-handler .handler-item,
+.right-handler .handler-item {
+  padding: 0 8px;
+
+  &.active,
+  &:not(.disable):hover {
+    background-color: #f1f1f1;
+  }
+}
+
+.right-handler {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  display: inline-block;
+  width: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.viewport-size {
+  font-size: 13px;
+}
+
+.viewport-size-adaptation {}
+
+.popover-menu {
+  min-width: 120px;
+  padding: 4px 0;
+}
+
+.menu-item {
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f1f1f1;
+  }
+}
+
+.file-input {
+  display: none;
+}
+
+.latex-editor {
+  padding: 10px 0;
+}
+
+.latex-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+@media screen and (width <= 1200px) {
+  .right-handler .text {
+    display: none;
+  }
+
+  .more > .handler-item {
+    display: none;
+  }
+
+  .more-icon {
+    display: block;
+  }
+
+  .add-element-handler .handler-item {
+    width: 30px;
+    margin: 0 1px;
+  }
+}
+
+@media screen and (width <= 1000px) {
+  .left-handler,
+  .right-handler {
+    display: none;
+  }
+}

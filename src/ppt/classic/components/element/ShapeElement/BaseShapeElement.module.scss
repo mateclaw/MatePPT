@@ -1,0 +1,45 @@
+.base-element-shape {
+  position: absolute;
+}
+
+.rotate-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.element-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  svg {
+    transform-origin: 0 0;
+    overflow: visible;
+    display: block;
+  }
+}
+
+.shape-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.top {
+  justify-content: flex-start;
+}
+
+.middle {
+  justify-content: center;
+}
+
+.bottom {
+  justify-content: flex-end;
+}

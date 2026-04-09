@@ -1,0 +1,25 @@
+<svg viewBox="0 0 70 69.0205" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70.000000" height="69.020508" fill="none" customframe="#000000">
+	<defs>
+		<g id="pixso_custom_effect_0">
+			<effect visibility="visible" effectType="gaussianBlur" stdDeviation="11" />
+		</g>
+		<filter id="filter_0" width="70.000000" height="69.020508" x="0.000000" y="0.000000" filterUnits="userSpaceOnUse" customEffect="url(#pixso_custom_effect_0)" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix" />
+			<feBlend result="shape" in="SourceGraphic" in2="BackgroundImageFix" mode="normal" />
+			<feGaussianBlur stdDeviation="3.66666675" result="effect_layerBlur_1" />
+		</filter>
+		<linearGradient id="paint_linear_0" x1="11.0000057" x2="59.0009117" y1="34.7425575" y2="34.4129562" gradientUnits="userSpaceOnUse">
+			<stop stop-color="rgb(248,123,255)" offset="0" stop-opacity="1" />
+			<stop stop-color="rgb(251,146,207)" offset="0.240592897" stop-opacity="1" />
+			<stop stop-color="rgb(255,221,155)" offset="0.481957912" stop-opacity="1" />
+			<stop stop-color="rgb(194,240,177)" offset="0.728431106" stop-opacity="1" />
+			<stop stop-color="rgb(47,216,254)" offset="1" stop-opacity="1" />
+		</linearGradient>
+	</defs>
+	<rect id="logo" width="40.000000" height="40.000000" x="15.000000" y="15.000000" />
+	<g filter="url(#filter_0)">
+		<rect id="Rectangle 2" width="48.000000" height="47.020409" x="11.000000" y="11.000000" rx="23.510204" fill="url(#paint_linear_0)" />
+	</g>
+	<path id="Ellipse 12" d="M55 35C55 46.0457 46.0457 55 35 55C23.9543 55 15 46.0457 15 35C15 23.9543 23.9543 15 35 15C46.0457 15 55 23.9543 55 35Z" fill="rgb(92,61,245)" fill-rule="nonzero" />
+	<path id="矢量 1" d="M41.5831 23C39.4407 23 37.7039 24.7466 37.7039 26.9012C37.7039 29.0557 39.4407 30.8023 41.5831 30.8023C43.7256 30.8023 45.4624 29.0557 45.4624 26.9012C45.4624 24.7466 43.7256 23 41.5831 23ZM19.3662 40.4453L26.1921 25.7663C26.8921 24.261 28.4258 23.4157 29.9812 23.5265C31.5365 23.4157 33.0702 24.261 33.7702 25.7663L40.5962 40.4453C41.5037 42.397 40.6662 44.7191 38.7255 45.6318C36.7847 46.5444 34.4758 45.7022 33.5682 43.7505L29.9812 36.0367L26.3941 43.7505C25.4866 45.7022 23.1776 46.5444 21.2369 45.6318C19.2962 44.7191 18.4586 42.397 19.3662 40.4453ZM48.9161 34.0779L51.6338 39.9224C52.5414 41.8741 51.7038 44.1961 49.7631 45.1088C47.8224 46.0215 45.5134 45.1792 44.6059 43.2275L41.8881 37.3831C40.9806 35.4314 41.8181 33.1094 43.7588 32.1967C45.6995 31.284 48.0085 32.1263 48.9161 34.0779Z" fill="rgb(255,255,255)" fill-rule="evenodd" />
+</svg>

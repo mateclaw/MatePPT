@@ -1,0 +1,54 @@
+.editableElementVideo {
+  position: absolute;
+}
+
+.lock {
+}
+
+.lock .handlerBorder {
+  cursor: default;
+}
+
+.rotateWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.elementContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.handlerBorder {
+  position: absolute;
+  cursor: move;
+}
+
+.handlerBorderT {
+  width: 100%;
+  height: 20px;
+  top: 0;
+  left: 0;
+}
+
+.handlerBorderB {
+  width: 100%;
+  height: 5px;
+  bottom: 0;
+  left: 0;
+}
+
+.handlerBorderL {
+  width: 10px;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.handlerBorderR {
+  width: 10px;
+  height: 100%;
+  right: 0;
+  top: 0;
+}

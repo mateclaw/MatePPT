@@ -1,0 +1,81 @@
+/* ExportPDF.module.scss */
+.export-pdf-dialog {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.thumbnails-view {
+  @include absolute-0();
+
+  &::after {
+    content: '';
+    background-color: #fff;
+    @include absolute-0();
+  }
+}
+
+.thumbnails {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.thumbnail {}
+
+.break-page {
+  break-after: page;
+}
+
+.configs {
+  width: 300px;
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.title {
+  width: 100px;
+}
+
+.config-item {
+  flex: 1;
+}
+
+.tip {
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.8;
+  margin-top: 25px;
+}
+
+.btns {
+  width: 300px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.export {
+  flex: 1;
+}
+
+.close {
+  width: 100px;
+  margin-left: 10px;
+}

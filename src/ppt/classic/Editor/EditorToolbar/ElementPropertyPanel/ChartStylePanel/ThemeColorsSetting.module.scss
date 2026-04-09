@@ -1,0 +1,44 @@
+/* ThemeColorsSetting.module.scss */
+.theme-colors-setting {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin-bottom: 15px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-size: 13px;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.color-btn-wrap {
+  position: relative;
+}
+
+.delete-color-btn {
+  position: absolute;
+  width: 30px;
+  right: 2px;
+  top: 2px;
+  bottom: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  cursor: pointer;
+}

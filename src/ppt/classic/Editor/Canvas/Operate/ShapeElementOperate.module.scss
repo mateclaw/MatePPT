@@ -1,0 +1,12 @@
+/* ShapeElementOperate.module.scss */
+.operate-keypoint-handler {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  left: 0;
+  top: 0;
+  margin: -5px 0 0 -5px;
+  border: 1px solid $themeColor;
+  background-color: #ffe873;
+  border-radius: 1px;
+}

@@ -1,0 +1,54 @@
+/* Operate.module.scss */
+.operate {
+  position: absolute;
+  z-index: 100;
+  user-select: none;
+}
+
+.digitbot-close {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.digitbot-close:hover {
+  background: #f3f4f6;
+}
+
+.multi-select {
+  opacity: 0.2;
+}
+
+.animation-index {
+  position: absolute;
+  top: 0;
+  left: -24px;
+  font-size: 12px;
+}
+
+.index-item {
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  color: $themeColor;
+  border: 1px solid $themeColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & + & {
+    margin-top: 5px;
+  }
+}

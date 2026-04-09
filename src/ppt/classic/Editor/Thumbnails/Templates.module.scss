@@ -1,0 +1,122 @@
+.templates {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  user-select: none;
+}
+
+.catalogs {
+  width: 108px;
+  margin-right: 10px;
+  padding-right: 10px;
+  border-right: 1px solid $borderColor;
+  overflow: auto;
+}
+
+.catalog {
+  padding: 7px 8px;
+  border-radius: $borderRadius;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.active {
+  color: $themeColor;
+  background-color: rgba($color: $themeColor, $alpha: .05);
+  border-right: 2px solid $themeColor;
+  font-weight: 700;
+}
+
+.catalog + .catalog {
+  margin-top: 3px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-right: 4px;
+
+  &:hover .insert-all {
+    opacity: 1;
+    transition: opacity $transitionDelay;
+  }
+}
+
+.types {
+  display: flex;
+}
+
+.type {
+  border-radius: $borderRadius;
+  padding: 3px 8px;
+  font-size: 12px;
+  cursor: pointer;
+
+  & + .type {
+    margin-left: 4px;
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.insert-all {
+  opacity: 0;
+  font-size: 12px;
+  color: $themeColor;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.list {
+  width: 392px;
+  padding: 2px;
+  margin-right: -10px;
+  padding-right: 10px;
+  overflow: auto;
+  @include flex-grid-layout();
+}
+
+.slide-item {
+  position: relative;
+  @include flex-grid-layout-children(2, 48%);
+
+  &:hover .btns {
+    opacity: 1;
+  }
+
+  &:hover .thumbnail {
+    outline-color: $themeColor;
+  }
+}
+
+.btns {
+  @include absolute-0();
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: rgba($color: #000, $alpha: .25);
+  opacity: 0;
+  transition: opacity $transitionDelay;
+}
+
+.btn {}
+
+.thumbnail {
+  outline: 2px solid $borderColor;
+  transition: outline $transitionDelay;
+  border-radius: $borderRadius;
+  cursor: pointer;
+}

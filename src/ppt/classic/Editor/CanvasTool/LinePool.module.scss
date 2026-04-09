@@ -1,0 +1,51 @@
+/* LinePool.module.scss */
+.line-pool {
+  width: 220px;
+  overflow: auto;
+  margin-bottom: -12px;
+  margin-right: -12px;
+  padding-right: 12px;
+}
+
+.category-name {
+  width: 100%;
+  font-size: 12px;
+  margin-bottom: 10px;
+  border-left: 4px solid #bbb;
+  background-color: #f1f1f1;
+  padding: 3px 0 3px 8px;
+  color: #555;
+}
+
+.line-list {
+  @include flex-grid-layout();
+  margin-bottom: 10px;
+}
+
+.line-item {
+  @include flex-grid-layout-children(5, 19%);
+  height: 0;
+  padding-bottom: 19%;
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.line-content {
+  @include absolute-0();
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #999;
+
+  &:hover {
+    color: $themeColor;
+  }
+
+  svg:not(:root) {
+    overflow: visible;
+  }
+}
+
+.line-marker {}
+.line-path {}

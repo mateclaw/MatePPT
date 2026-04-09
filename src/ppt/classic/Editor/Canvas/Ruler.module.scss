@@ -1,0 +1,118 @@
+/* Ruler.module.scss */
+.ruler {
+  font-size: 12px;
+}
+
+.h {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid $borderColor;
+  height: 20px;
+  top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.h .range {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background-color: rgba($color: $themeColor, $alpha: 0.1);
+}
+
+.h .ruler-marker-100 {
+  height: 100%;
+  line-height: 20px;
+  text-align: right;
+  flex-shrink: 0;
+  padding-right: 5px;
+  position: relative;
+}
+
+.h .ruler-marker-100.hide span {
+  display: none;
+}
+
+.h .ruler-marker-100.omit::before {
+  display: none;
+}
+
+.h .ruler-marker-100:not(:last-child)::after {
+  content: '';
+  width: 0.1px;
+  height: 12px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: #999;
+}
+
+.h .ruler-marker-100::before {
+  content: '';
+  width: 0.1px;
+  height: 8px;
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  background-color: #999;
+}
+
+.v {
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid $borderColor;
+  width: 20px;
+  left: 5px;
+  overflow: hidden;
+}
+
+.v .range {
+  position: absolute;
+  left: 0;
+  right: 0;
+  background-color: rgba($color: $themeColor, $alpha: 0.1);
+}
+
+.v .ruler-marker-100 {
+  width: 100%;
+  line-height: 20px;
+  text-align: right;
+  padding-bottom: 5px;
+  position: relative;
+  writing-mode: vertical-rl;
+}
+
+.v .ruler-marker-100.hide span {
+  display: none;
+}
+
+.v .ruler-marker-100.omit::before {
+  display: none;
+}
+
+.v .ruler-marker-100:not(:last-child)::after {
+  content: '';
+  height: 0.1px;
+  width: 12px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #999;
+}
+
+.v .ruler-marker-100::before {
+  content: '';
+  height: 0.1px;
+  width: 8px;
+  position: absolute;
+  bottom: 50%;
+  right: 0;
+  background-color: #999;
+}
+
+.ruler-marker-100 {}
+.range {}
+.hide {}
+.omit {}

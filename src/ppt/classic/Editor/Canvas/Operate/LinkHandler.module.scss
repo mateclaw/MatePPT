@@ -1,0 +1,33 @@
+/* LinkHandler.module.scss */
+.link-handler {
+  height: 30px;
+  position: absolute;
+  left: 0;
+  font-size: 12px;
+  padding: 0 10px;
+  background-color: #fff;
+  box-shadow: $boxShadow;
+  display: flex;
+  align-items: center;
+  color: $themeColor;
+}
+
+.link {
+  max-width: 300px;
+  margin-right: 20px;
+  word-break: keep-all;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  word-break: keep-all;
+  cursor: pointer;
+}

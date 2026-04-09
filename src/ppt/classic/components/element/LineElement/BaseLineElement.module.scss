@@ -1,0 +1,19 @@
+.baseElementLine {
+  position: absolute;
+}
+
+.elementContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.rotateWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.elementContent svg {
+  transform-origin: 0 0;
+  overflow: visible;
+}

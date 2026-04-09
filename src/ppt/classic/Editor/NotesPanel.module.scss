@@ -1,0 +1,160 @@
+.notes-panel {
+  height: 100%;
+  font-size: 12px;
+  user-select: none;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.notes {
+  flex: 1;
+  overflow: auto;
+  margin: 0 -10px;
+  padding: 2px 12px;
+}
+
+.empty {
+  width: 100%;
+  height: 100%;
+  color: #999;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.note {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 10px;
+
+  & + .note {
+    margin-top: 10px;
+  }
+}
+
+.active {
+  background-color: #f7f7f7;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+
+  &:hover {
+    .btns {
+      opacity: 1;
+    }
+  }
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #42ba97;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.username {
+  font-size: 14px;
+}
+
+.time {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.btns {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+}
+
+.btn {
+  margin-left: 5px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    color: $themeColor;
+  }
+}
+
+.reply {}
+.delete {}
+
+.replies {
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.reply-item {
+  margin-top: 10px;
+}
+
+.content {
+  margin-top: 5px;
+}
+
+.note-reply {
+  margin-top: 15px;
+}
+
+.reply-btns {
+  margin-top: 5px;
+  text-align: right;
+
+  .btn {
+    margin-left: 8px;
+  }
+}
+
+.send {
+  height: 120px;
+  flex-shrink: 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.footer {
+  margin-top: 10px;
+  display: flex;
+
+    .btn {      
+      &.icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        color: #666;
+        cursor: pointer;
+      }
+    }
+
+  .btn + .btn {
+    margin-left: 8px;
+  }
+}
+
+.icon {}

@@ -1,0 +1,104 @@
+.select-panel {
+  height: 100%;
+  font-size: 12px;
+  user-select: none;
+}
+
+.handler {
+  height: 24px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btns {}
+
+.icon-btns {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.icon-btn {
+  width: 16px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    color: $themeColor;
+  }
+}
+
+.element-list {
+  height: calc(100% - 32px);
+  padding-right: 10px;
+  margin-right: -10px;
+  overflow: auto;
+}
+
+.item {
+  padding: 5px;
+  font-size: 12px;
+  border-radius: $borderRadius;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color: $themeColor, $alpha: .25);
+  }
+}
+
+.active {
+  background-color: rgba($color: $themeColor, $alpha: .1);
+}
+
+.group-active {
+  background-color: rgba($color: $themeColor, $alpha: .2);
+}
+
+.name {
+  height: 18px;
+  line-height: 18px;
+  flex: 1;
+  @include ellipsis-oneline();
+}
+
+.icons {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.group-els {
+  padding: 5px 0;
+}
+
+.group-title {
+  margin-bottom: 5px;
+  padding: 0 5px;
+}
+
+.group-els .item {
+  margin-left: 15px;
+}
+
+.input {
+  width: 100%;
+  height: 16px;
+  border: 0;
+  outline: 0;
+  padding-left: 0;
+  padding-right: 0;
+  flex: 1;
+  font-size: 12px;
+  background-color: transparent;
+}

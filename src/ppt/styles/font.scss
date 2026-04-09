@@ -1,0 +1,55 @@
+$fonts: (
+  'DengXian_Light',
+  'DengXian_Regular',
+  'DengXian_Bold',
+  'MicrosoftYaHei_Light',
+  'MicrosoftYaHei_Regular',
+  'MicrosoftYaHei_Bold',
+  'SimSun_Regular',
+  'SimSun_Bold',
+  'NSimSun_Regular',
+  'SimHei_Regular',
+  'SimHei_Bold',
+  'KaiTi_Regular',
+  'FangSong_Regular',
+  'YouYuan_Regular',
+  'PingFangSC_Light',
+  'PingFangSC_Regular',
+  'PingFangSC_Medium',
+  'PingFangSC_Semibold',
+  'SourceHanSansSC_Regular',
+  'SourceHanSansSC_Medium',
+  'SourceHanSansSC_Bold',
+  'SourceHanSerifSC_Regular',
+  'SourceHanSerifSC_Medium',
+  'SourceHanSerifSC_Bold',
+  'Arial_Regular',
+  'Arial_Bold',
+  'TimesNewRoman_Regular',
+  'TimesNewRoman_Bold',
+  'Calibri_Regular',
+  'Calibri_Bold',
+  'Cambria_Regular',
+  'Cambria_Bold',
+  'Verdana_Regular',
+  'Verdana_Bold',
+  'Tahoma_Regular',
+  'Tahoma_Bold',
+  'TrebuchetMS_Regular',
+  'TrebuchetMS_Bold',
+  'Georgia_Regular',
+  'Georgia_Bold',
+  'CourierNew_Regular',
+  'CourierNew_Bold',
+  'SegoeUI_Regular',
+  'SegoeUI_Bold'
+);
+
+@each $font in $fonts {
+  @font-face {
+    font-display: swap;
+    font-family: $font;
+    src: url('/font/#{$font}.woff2') format('woff2');
+  }
+}
+

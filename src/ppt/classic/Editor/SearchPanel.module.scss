@@ -1,0 +1,80 @@
+.search-panel {
+  font-size: 13px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.search {}
+.replace {}
+
+.input {
+  margin-top: 10px;
+}
+
+.suffix {
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  font-size: 12px;
+  margin-right: 8px;
+  user-select: none;
+}
+
+.ignore-case {
+  font-size: 12px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.active {
+  color: $themeColor;
+}
+
+.next-btn {
+  width: 22px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 !important;
+  user-select: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $themeColor;
+  }
+}
+
+.left {}
+.right {}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.close-btn {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 8px;
+  right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: 13px;
+  cursor: pointer;
+
+  &:hover {
+    color: $themeColor;
+  }
+}

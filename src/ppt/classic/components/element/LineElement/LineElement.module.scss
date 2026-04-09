@@ -1,0 +1,34 @@
+.editableElementLine {
+  position: absolute;
+  pointer-events: none;
+}
+
+.lock {
+}
+
+.lock .linePath,
+.lock .linePoint {
+  cursor: default;
+}
+
+.elementContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.rotateWrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.elementContent svg {
+  transform-origin: 0 0;
+  overflow: visible;
+}
+
+.linePath,
+.linePoint {
+  pointer-events: all;
+  cursor: move;
+}

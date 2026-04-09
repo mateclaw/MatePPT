@@ -1,0 +1,257 @@
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c1c1c1;
+}
+.ppt_content {
+  /* padding-left: 1em; */
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+.ppt_desc {
+  text-align: center;
+  padding-top: 1.2em;
+}
+.left_div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 100%;
+  justify-content: center;
+  /* position: absolute; */
+  width: 220px;
+}
+.left_div_child {
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px 0 #0003;
+  margin-left: 12px;
+  height: 100%;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left_div_add{
+  flex:none;
+  height: 48px;
+  padding: 4px 12px 4px 30px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  
+;
+}
+.left_div_child_child {
+
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 8px 0 2px;
+}
+.left_div_item {
+  display: flex;
+  cursor: pointer;
+  margin: 10px 0;
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.left_div_item_index {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  height: 18px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 18px;
+  background: #ECEBEB;
+  color: #9EA5BA;
+  font-size: 12px;
+  z-index: 100;
+}
+.left_div_item_img {
+  height: 100px;
+  width: 178px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  position: relative;
+}
+
+.ppt_select{
+  .left_div_item_index {
+    background: #5C3DF5;
+    color: #fff;
+  }
+}
+
+.img_gening {
+  text-align: center;
+  line-height: 81px;
+  color: #666;
+  cursor: default;
+}
+.right_div {
+
+  background: #f9f9f9;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+.right_canvas {
+  margin: 0px auto;
+  display: block;
+  box-shadow: 0 0 0 1px #00000003,0 0 12px #0000001a;
+  position: relative;
+  
+}
+.ppt_select {
+  border: 2px solid #491ff8;
+}
+.draw_el_class {
+  position: fixed;
+}
+.draw_el_class:hover {
+  cursor: text;
+  border: 1.5px solid red;
+}
+.ppt_download {
+  float: right;
+  cursor: pointer;
+  margin-right: 1.5rem;
+}
+
+.ppt_download {
+  float: right;
+  cursor: pointer;
+  margin-right: 1.5rem;
+}
+.slides-navigation {
+  padding: 10px;
+  text-align: center;
+}
+.slides-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+.ppt_gen {
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.ppt_gen:hover {
+  background-color: #e0e0e0;
+}
+.ppt_gen.active {
+  background-color: #491ff8;
+  color: white;
+}
+
+.element-editor-popup {
+    position: fixed;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 150px;
+}
+
+.element-editor {
+    padding: 16px;
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.editor-header h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #999;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.editor-content {
+    margin-bottom: 16px;
+}
+
+.editor-section {
+    margin-bottom: 16px;
+}
+
+.editor-section h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.editor-footer {
+    text-align: right;
+}
+
+.editor-footer button {
+    padding: 8px 16px;
+    background-color: #1890ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.editor-footer button:hover {
+    background-color: #40a9ff;
+}
+
+
+.canvas{
+  background: #f9f9f9;
+}

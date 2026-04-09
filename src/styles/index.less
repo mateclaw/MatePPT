@@ -1,0 +1,147 @@
+@import './variable.less';
+@import './mixins.less';
+// @import './theme/dark.css';
+// @import './theme/light.css';
+
+:root {
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --primary-gradient: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+  --creative-gradient: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%);
+  --bg-page: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.95);
+  --radius-card: 24px;
+  --radius-pill: 999px;
+  --panel-height: 260px;
+  min-height: 100vh;
+  background-color: var(--bg-page);
+  color: #0f172a;
+  font-family: "Noto Sans SC", "Plus Jakarta Sans", sans-serif;
+  --color-green: #55D6AE;
+  --color-gold: #ECBA39;
+  
+}
+
+
+ .brand-title-gradient {
+  background: linear-gradient(to right, #4c1d95, #6d28d9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+ .hero-bg-gradient {
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(221, 214, 254, 0.8) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(199, 210, 254, 0.8) 0%, transparent 45%);
+}
+
+ .main-card-glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.08);
+}
+
+ .mode-btn-custom.selected {
+  background: var(--primary-gradient);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+ .mode-btn-custom.selected.creative {
+  background: var(--creative-gradient);
+  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.25);
+}
+
+ .chip-custom {
+  animation: popIn 0.2s;
+}
+
+ .chip-style {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #059669;
+}
+
+.chip-bili {
+  background: #fce7f3;
+  border-color: #fbcfe8;
+  color: #db2777;
+}
+
+ .chip-url {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #059669;
+}
+
+ .ppt-new-sender {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: 0 30px 60px -40px rgba(15, 23, 42, 0.45);
+}
+
+ .mateppt-sender-input {
+  color: #0f172a;
+  font-size: 16px;
+}
+
+ .mateppt-sender-input::placeholder {
+  color: #94a3b8;
+}
+
+ .mateppt-select {
+    padding: 0px 4px 0px 16px;
+    border-radius: 10px;
+    background: #E5E7EB;
+}
+
+ .mateppt-select-label {
+   
+    color: #4B5563;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    font-weight: 100;
+
+}
+
+ .mateppt-select-control .ant-select-selector {
+    color: #4B5563;
+    border: none;
+    font-size: 13px;
+    cursor: pointer;
+    outline: none;
+    font-weight: 100;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

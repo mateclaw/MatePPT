@@ -1,0 +1,17 @@
+.preview {
+  position: relative;
+  overflow: hidden;
+  background: #0f172a;
+}
+
+.stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}
+
+.background {
+  position: absolute;
+  inset: 0;
+}

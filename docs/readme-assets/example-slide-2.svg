@@ -1,0 +1,19 @@
+<svg width="900" height="540" viewBox="0 0 900 540" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="540" rx="24" fill="#FFFBEB"/>
+  <rect x="36" y="36" width="828" height="468" rx="20" fill="url(#g2)"/>
+  <rect x="84" y="86" width="420" height="68" rx="18" fill="#111827"/>
+  <rect x="84" y="176" width="300" height="16" rx="8" fill="#111827" fill-opacity="0.65"/>
+  <rect x="84" y="208" width="260" height="16" rx="8" fill="#111827" fill-opacity="0.45"/>
+  <rect x="84" y="278" width="340" height="170" rx="24" fill="#111827" fill-opacity="0.12"/>
+  <rect x="470" y="108" width="310" height="300" rx="24" fill="white" fill-opacity="0.82"/>
+  <rect x="510" y="156" width="230" height="20" rx="10" fill="#F59E0B"/>
+  <rect x="510" y="196" width="180" height="20" rx="10" fill="#FBBF24"/>
+  <rect x="510" y="236" width="120" height="20" rx="10" fill="#FCD34D"/>
+  <text x="84" y="410" fill="#111827" font-family="Arial, sans-serif" font-size="28" font-weight="700">Example Slide 02</text>
+  <defs>
+    <linearGradient id="g2" x1="36" y1="36" x2="864" y2="504" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FDE68A"/>
+      <stop offset="1" stop-color="#F59E0B"/>
+    </linearGradient>
+  </defs>
+</svg>

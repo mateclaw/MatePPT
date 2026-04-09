@@ -1,0 +1,117 @@
+.outline-editor {
+  padding: 0 10px;
+  padding-left: 40px;
+  position: relative;
+}
+
+.item {
+  height: 32px;
+  position: relative;
+}
+
+.contextmenu-active {
+  color: $themeColor;
+
+  .text {
+    background-color: rgba($color: $themeColor, $alpha: .08);
+  }
+}
+
+.title {
+  font-weight: 700;
+}
+
+.lv-1 {
+  font-size: 22px;
+}
+
+.lv-2 {
+  font-size: 17px;
+}
+
+.lv-3 {
+  font-size: 15px;
+}
+
+.lv-4 {
+  font-size: 13px;
+  padding-left: 20px;
+}
+
+.text {
+  height: 100%;
+  padding: 0 11px;
+  line-height: 32px;
+  border-radius: $borderRadius;
+  transition: background-color .2s;
+  cursor: pointer;
+  @include ellipsis-oneline();
+
+  &:hover {
+    background-color: rgba($color: $themeColor, $alpha: .08);
+  }
+}
+
+.flag {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: 50%;
+  left: -40px;
+  margin-top: -16px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &::before {
+    content: '';
+    width: 1px;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    background-color: rgba($color: $themeColor, $alpha: .1);
+  }
+
+  &::after {
+    content: '';
+    width: 32px;
+    height: 22px;
+    border-radius: 2px;
+    background-color: #fff;
+    border: 1px solid $themeColor;
+    color: $themeColor;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
+
+.lv-1 .flag::after {
+  content: '主题';
+}
+
+.lv-2 .flag::after {
+  content: '章';
+}
+
+.lv-3 .flag::after {
+  content: '节';
+}
+
+.lv-4 .flag::after {
+  opacity: 0;
+}
+
+.editable-input {
+  width: 100%;
+  height: 32px;
+  border: 0;
+  outline: 0;
+  padding: 0 11px;
+  font-size: inherit;
+  background-color: transparent;
+}

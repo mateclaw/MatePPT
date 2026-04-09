@@ -1,0 +1,12 @@
+/* ExportDialog.module.scss */
+.export-dialog {
+  margin: -20px;
+}
+
+.content {
+  height: 460px;
+  padding: 12px;
+  font-size: 13px;
+
+  @include overflow-overlay();
+}

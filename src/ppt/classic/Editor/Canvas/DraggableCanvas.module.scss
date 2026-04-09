@@ -1,0 +1,63 @@
+.frame {
+  position: absolute;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.18);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.22);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.canvasSurface {
+  width: 100%;
+  height: 100%;
+}
+
+.dragHandle {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: grab;
+  z-index: 3;
+  user-select: none;
+}
+
+.resizeHandle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border: 1px solid #2e7dff;
+  border-radius: 2px;
+  z-index: 3;
+  touch-action: none;
+}
+
+.nw {
+  top: -6px;
+  left: -6px;
+  cursor: nwse-resize;
+}
+
+.ne {
+  top: -6px;
+  right: -6px;
+  cursor: nesw-resize;
+}
+
+.sw {
+  bottom: -6px;
+  left: -6px;
+  cursor: nesw-resize;
+}
+
+.se {
+  bottom: -6px;
+  right: -6px;
+  cursor: nwse-resize;
+}

@@ -1,0 +1,48 @@
+.agent-expandable-panel {
+
+    background: var(--ant-color-bg-container);
+    border-radius: 12px;
+    margin-bottom: 12px;
+
+    &-header {}
+
+    &-title {
+        font-size: 14px;
+        font-weight: 600;
+        flex: 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}
+
+.agent-item-panel {
+    display: flex;
+    padding: 8px 4px 8px 16px;
+    align-items: center;
+    border-radius: 8px;
+    line-height: 1em;
+    &:hover { 
+        background: var(--ant-color-bg-layout);
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: column;
+        margin-right: 16px;
+        flex: 1;
+        cursor: pointer;
+    }
+
+    &-title {
+        display: flex;
+        align-items: center;
+    }
+
+    &-desc {
+        color: var(--ant-color-text-secondary);
+        margin-top: 4px;
+        font-size: 12px;
+
+    }
+}

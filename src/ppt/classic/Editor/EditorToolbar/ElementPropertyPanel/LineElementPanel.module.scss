@@ -1,0 +1,18 @@
+/* LineElementPanel.module.scss */
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.option {
+  height: 32px;
+  padding: 0 5px;
+  border-radius: $borderRadius;
+
+  &:hover {
+    background-color: rgba($color: $themeColor, $alpha: 0.05);
+    cursor: pointer;
+  }
+}

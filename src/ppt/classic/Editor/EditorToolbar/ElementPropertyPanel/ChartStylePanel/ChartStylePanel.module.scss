@@ -1,0 +1,61 @@
+/* ChartStylePanel.module.scss */
+.chart-style-panel {
+  user-select: none;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.full-width-btn {
+  width: 100%;
+}
+
+.label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.preset-themes {
+  width: 250px;
+  display: flex;
+  @include flex-grid-layout();
+}
+
+.preset-theme {
+  display: flex;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 2px;
+  border-radius: $borderRadius;
+  @include flex-grid-layout-children(2, 48%);
+
+  &:hover {
+    border-color: $themeColor;
+    transition: border-color $transitionDelayFast;
+  }
+}
+
+.preset-theme-color {
+  height: 20px;
+  flex: 1;
+}
+
+.color-list-btn {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  padding: 2px;
+  border: 1px solid $borderColor;
+  border-radius: $borderRadius;
+  height: 28px;
+}
+
+.color-list-item {
+  width: 10px;
+  height: 16px;
+  border-radius: 2px;
+}

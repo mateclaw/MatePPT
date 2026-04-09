@@ -1,0 +1,24 @@
+/* AudioElementPanel.module.scss */
+.row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label {
+  width: 40%;
+}
+
+.control {
+  width: 60%;
+}
+
+.switch-row {
+  height: 32px;
+}
+
+.switch-wrapper {
+  text-align: right;
+  width: 60%;
+}

@@ -1,0 +1,131 @@
+// Contextmenu 样式变量
+$themeColor: #de6949;
+$borderColor: #e5e7eb;
+$boxShadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+$borderRadius: 2px;
+$transitionDelayFast: 0.1s;
+
+// 菜单样式
+.contextmenu-mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9998;
+}
+
+.contextmenu {
+  position: fixed;
+  z-index: 9999;
+  user-select: none;
+}
+
+// 菜单内容
+.menu-content {
+  width: 180px;
+  padding: 5px 0;
+  background: #fff;
+  border: 1px solid $borderColor;
+  box-shadow: $boxShadow;
+  border-radius: $borderRadius;
+  list-style: none;
+  margin: 0;
+
+  .menu-item {
+    padding: 0 20px;
+    color: #333;
+    font-size: 12px;
+    transition: all $transitionDelayFast;
+    white-space: nowrap;
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:not(.disable):hover {
+      background-color: rgba($themeColor, 0.15);
+
+      .sub-menu {
+        display: block;
+      }
+
+      .has-handler::after {
+        transform: scale(1);
+      }
+    }
+
+    &.divider {
+      height: 1px;
+      overflow: hidden;
+      margin: 5px;
+      background-color: #e5e5e5;
+      line-height: 0;
+      padding: 0;
+
+      div {
+        display: none;
+      }
+    }
+
+    &.disable {
+      color: #b1b1b1;
+      cursor: no-drop;
+    }
+  }
+}
+
+// 菜单项内容
+.menu-item-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  .text {
+    flex: 1;
+  }
+
+  .sub-text {
+    color: #666;
+    opacity: 0.6;
+  }
+
+  // 有子菜单的箭头
+  &.has-children::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #666 #666 transparent transparent;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  // 有子菜单和处理函数的分隔线
+  &.has-children.has-handler::after {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 24px;
+    background-color: rgba(#fff, 0.3);
+    position: absolute;
+    right: 18px;
+    top: 3px;
+    transform: scale(0);
+    transition: transform $transitionDelayFast;
+  }
+
+  // 子菜单
+  .sub-menu {
+    width: 120px;
+    position: absolute;
+    display: none;
+    left: 112%;
+    top: -6px;
+  }
+}
