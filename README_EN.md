@@ -198,3 +198,9 @@ This project is open-sourced under the `AGPL-3.0` license. See [LICENSE](./LICEN
 For discussion, collaboration, or project-related questions, feel free to reach out via:
 
 - `bubuxiu@gmail.com`
+
+If you would like to join the WeChat group, scan the QR code below:
+
+<p align="center">
+  <img src="./docs/readme-assets/微信图片_20260409120240_543_142.jpg" alt="MatePPT WeChat Group" width="280" />
+</p>
