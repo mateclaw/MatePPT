@@ -200,5 +200,5 @@ corepack pnpm build
 如需加入微信群交流，可扫码入群：
 
 <p align="center">
-  <img src="./docs/readme-assets/微信图片_20260409120240_543_142.jpg" alt="MatePPT 微信交流群" width="280" />
+  <img src="./docs/readme-assets/wechat-group-qr.jpg" alt="MatePPT 微信交流群" width="280" />
 </p>

@@ -202,5 +202,5 @@ For discussion, collaboration, or project-related questions, feel free to reach 
 If you would like to join the WeChat group, scan the QR code below:
 
 <p align="center">
-  <img src="./docs/readme-assets/微信图片_20260409120240_543_142.jpg" alt="MatePPT WeChat Group" width="280" />
+  <img src="./docs/readme-assets/wechat-group-qr.jpg" alt="MatePPT WeChat Group" width="280" />
 </p>
