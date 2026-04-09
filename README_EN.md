@@ -192,3 +192,9 @@ corepack pnpm build
 ## 📜 License
 
 This project is open-sourced under the `AGPL-3.0` license. See [LICENSE](./LICENSE) for details.
+
+## 📮 Contact
+
+For discussion, collaboration, or project-related questions, feel free to reach out via:
+
+- `bubuxiu@gmail.com`

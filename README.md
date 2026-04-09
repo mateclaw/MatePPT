@@ -190,3 +190,9 @@ corepack pnpm build
 ## 📄 开源协议
 
 本项目采用 `AGPL-3.0` 协议开源，具体内容见 [LICENSE](./LICENSE)。
+
+## 📮 联系方式
+
+如需交流、合作或问题反馈，可通过以下邮箱联系：
+
+- `bubuxiu@gmail.com`
