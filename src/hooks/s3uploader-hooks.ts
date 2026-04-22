@@ -31,6 +31,21 @@ export const buildDirectUploadTarget = (uploadUrl: string): UploadTarget => ({
     uploadUrl,
     method: 'PUT',
 });
+
+const getDevProxiedUploadUrl = (rawUrl: string) => {
+    if (typeof window === 'undefined') return rawUrl;
+    try {
+        const parsed = new URL(rawUrl, window.location.origin);
+        const isLocalDev = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+        const isMatePptOss = parsed.hostname === 'mateppt.oss-cn-shanghai.aliyuncs.com';
+        if (isLocalDev && isMatePptOss) {
+            return `${window.location.origin}/__oss_proxy${parsed.pathname}${parsed.search}`;
+        }
+    } catch (error) {
+        console.warn('[useS3Uploader] Failed to normalize upload url', error);
+    }
+    return rawUrl;
+};
 const presetTypes = {
     "preset:doc": ".doc,.docx",
     "preset:xls": ".xls,.xlsx",
@@ -81,7 +96,8 @@ export const useS3Uploader = (props: UseS3UploaderProps) => {
     const uploadByUrl = useCallback((file: File, target: UploadTarget, onProgressCb?: (progress: any) => void) => {
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
-            xhr.open(target.method || 'PUT', target.uploadUrl, true);
+            const requestUrl = getDevProxiedUploadUrl(target.uploadUrl);
+            xhr.open(target.method || 'PUT', requestUrl, true);
 
             if (target.headers && typeof target.headers === 'object') {
                 Object.entries(target.headers).forEach(([key, value]) => {
@@ -321,35 +337,7 @@ export const useS3Uploader = (props: UseS3UploaderProps) => {
                     uploadPromise
                         .then((res: any) => {
                             if (res) return res;
-                            return getMinioService().then(minio =>
-                                new Promise((resolve, reject) => {
-                                    minio.uploadRequest({
-                                        file: originFile,
-                                        onSuccess: resolve,
-                                        onError: reject,
-                                        onProgress: (progress: { percent: number }) => {
-                                            console.log('上传进度:', progress);
-                                            setUploadProgress(prev => ({
-                                                ...prev,
-                                                [file.uid]: progress.percent
-                                            }));
-                                            setVfileList(prevList => {
-                                                const updatedList = prevList.map(f =>
-                                                    f.uid === file.uid
-                                                        ? { ...f, percent: progress.percent, status: 'uploading' }
-                                                        : f
-                                                );
-                                        notifyFileList(updatedList);
-                                        setPendingFiles(updatedList);
-                                        return updatedList;
-                                    });
-                                            if (onProgress) {
-                                                onProgress(progress.percent);
-                                            }
-                                        }
-                                    });
-                                })
-                            );
+                            return createLocalUploadResult(originFile);
                         })
                         .then((res: any) => {
                             if (onSuccess) {

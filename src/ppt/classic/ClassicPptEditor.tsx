@@ -78,8 +78,12 @@ const ClassicPptEditor: React.FC<ClassicPptEditorProps> = ({
     }))
   );
   const slides = useSlidesStore((state) => state.slides);
+  const slideIndex = useSlidesStore((state) => state.slideIndex);
   const screening = useScreenStore((state) => state.screening);
   const databaseId = useMainStore((state) => state.databaseId);
+  const canvasScale = useMainStore((state) => state.canvasScale);
+  const activeElementIdList = useMainStore((state) => state.activeElementIdList);
+  const handleElementId = useMainStore((state) => state.handleElementId);
   const generatingPpt = usePptProjectStore((state) => state.generatingPpt);
   const { initSnapshotDatabase, resetSnapshotDatabase } = useSnapshotStore(
     useShallow((state) => ({
@@ -89,6 +93,25 @@ const ClassicPptEditor: React.FC<ClassicPptEditorProps> = ({
   );
   const isPcDevice = useMemo(() => isPC(), []);
   const snapshotInitRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    const currentSlide = slides[slideIndex] || null;
+    const debugState = {
+      databaseId,
+      slideIndex,
+      canvasScale,
+      activeElementIdList,
+      handleElementId,
+      slides,
+      currentSlide,
+    };
+    (window as any).__PPT_DEBUG__ = debugState;
+    return () => {
+      if ((window as any).__PPT_DEBUG__?.databaseId === databaseId) {
+        delete (window as any).__PPT_DEBUG__;
+      }
+    };
+  }, [activeElementIdList, canvasScale, databaseId, handleElementId, slideIndex, slides]);
 
   useEffect(() => {
     if (!pptData?.slides?.length) return;

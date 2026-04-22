@@ -351,33 +351,6 @@ export default function Thumbnails({
     setContextmenuEl(null)
   }
 
-  const menuItems = [
-    { key: 'blank', label: '添加空白页面', icon: <Icon icon="local:ppt/icon-blank" width="22" height="22" /> },
-    { key: 'ai-generate', label: 'AI生成页面', icon: <Icon icon="local:ppt/icon-aigen" width="24" height="24" /> },
-    { key: 'template', label: '添加模板页面', icon: <Icon icon="local:ppt/icon-add-layout" width="20" height="20" /> },
-  ]
-
-
-  const onMenuClick: MenuProps['onClick'] = (e) => {
-    console.log('[ThumbnailPanel] 菜单点击:', e.key);
-    switch (e.key) {
-      case 'blank':
-        if (onAddBlankSlide) onAddBlankSlide();
-        else createSlide();
-        break;
-      case 'template':
-        if (onAddTemplateSlide) onAddTemplateSlide();
-        break;
-      case 'ai-generate':
-        if (onAddAIGeneratedSlide) onAddAIGeneratedSlide();
-        break;
-
-        break;
-      default:
-        break;
-    }
-  };
-
   return (
     <div
       ref={containerRef}
@@ -414,9 +387,6 @@ export default function Thumbnails({
           <PlusOutlined />
           添加幻灯片
         </Button>
-        <Dropdown menu={{ items: menuItems, onClick: onMenuClick }} placement="bottomLeft">
-          <Button icon={<DownOutlined />} />
-        </Dropdown>
       </Space.Compact>}
 
       <div className={styles['thumbnail-list']} onScroll={handleScroll}>

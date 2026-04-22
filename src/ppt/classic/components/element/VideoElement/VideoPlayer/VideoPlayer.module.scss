@@ -40,6 +40,17 @@
   height: 100%;
   position: relative;
   z-index: 2;
+  object-fit: cover;
+}
+
+.videoWrap .posterOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;
 }
 
 .videoWrap .loadError {
@@ -48,7 +59,7 @@
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 3;
+  z-index: 4;
   font-size: 15px;
   color: #fff;
   pointer-events: none;

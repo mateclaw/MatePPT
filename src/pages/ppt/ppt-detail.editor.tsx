@@ -10,6 +10,16 @@ const PptEditorRedirectPage: React.FC = () => {
   const { verifyAndLoadProject } = usePptProjectStore();
 
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      (window as any).__PPT_ROUTE_DEBUG__ = {
+        page: 'ppt-detail.editor',
+        id,
+        search: location.search,
+        state: location.state,
+      };
+      console.log('[ppt-debug] redirect page loaded', (window as any).__PPT_ROUTE_DEBUG__);
+    }
+
     if (!id) return;
 
     const stateParams = location.state as any;

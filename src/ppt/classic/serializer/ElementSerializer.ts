@@ -1,17 +1,17 @@
-import {Element} from '@/ppt/core/entity/element/Element'
-import {TextElement} from '@/ppt/core/entity/element/TextElement'
-import {ShapeElement} from '@/ppt/core/entity/element/ShapeElement'
-import {ImageElement} from '@/ppt/core/entity/element/ImageElement'
-import {LineElement} from '@/ppt/core/entity/element/LineElement'
-import {ChartElement} from '@/ppt/core/entity/element/ChartElement'
-import {TableElement} from '@/ppt/core/entity/element/TableElement'
-import {MathElement} from '@/ppt/core/entity/element/MathElement'
-import {VideoElement} from '@/ppt/core/entity/element/VideoElement'
-import {AudioElement} from '@/ppt/core/entity/element/AudioElement'
+import { Element } from '@/ppt/core/entity/element/Element'
+import { TextElement } from '@/ppt/core/entity/element/TextElement'
+import { ShapeElement } from '@/ppt/core/entity/element/ShapeElement'
+import { ImageElement } from '@/ppt/core/entity/element/ImageElement'
+import { LineElement } from '@/ppt/core/entity/element/LineElement'
+import { ChartElement } from '@/ppt/core/entity/element/ChartElement'
+import { TableElement } from '@/ppt/core/entity/element/TableElement'
+import { MathElement } from '@/ppt/core/entity/element/MathElement'
+import { VideoElement } from '@/ppt/core/entity/element/VideoElement'
+import { AudioElement } from '@/ppt/core/entity/element/AudioElement'
 
 export class ElementSerializer {
     static serializeList(elements: Element[] = []): any[] {
-        return elements.map(el => this.serialize(el))
+        return elements.map((el) => this.serialize(el))
     }
 
     static serialize(element: Element): Record<string, any> {
@@ -19,28 +19,23 @@ export class ElementSerializer {
 
         switch (element.type) {
             case 'text':
-                return {...base, ...this.serializeText(element as TextElement)}
+                return { ...base, ...this.serializeText(element as TextElement) }
             case 'shape':
-                return {...base, ...this.serializeShape(element as ShapeElement)}
+                return { ...base, ...this.serializeShape(element as ShapeElement) }
             case 'image':
-                return {...base, ...this.serializeImage(element as ImageElement)}
+                return { ...base, ...this.serializeImage(element as ImageElement) }
             case 'line':
-                return {...base, ...this.serializeLine(element as LineElement)}
+                return { ...base, ...this.serializeLine(element as LineElement) }
             case 'chart':
-                return {...base, ...this.serializeChart(element as ChartElement)}
+                return { ...base, ...this.serializeChart(element as ChartElement) }
             case 'table':
-                return {...base, ...this.serializeTable(element as TableElement)}
+                return { ...base, ...this.serializeTable(element as TableElement) }
             case 'math':
-                return {...base, ...this.serializeMath(element as MathElement)}
+                return { ...base, ...this.serializeMath(element as MathElement) }
             case 'video':
-                return {...base, ...this.serializeVideo(element as VideoElement)}
+                return { ...base, ...this.serializeVideo(element as VideoElement) }
             case 'audio':
-                return {...base, ...this.serializeAudio(element as AudioElement)}
-            // 下面两个类型前端没有
-            // case 'group':
-            //   return { ...base, elements: this.serializeList((element as GroupElement).elements) }
-            // case 'smartart':
-            //   return { ...base, ...this.serializeShape(element as SmartArtElement) }
+                return { ...base, ...this.serializeAudio(element as AudioElement) }
             default:
                 return base
         }
@@ -76,6 +71,9 @@ export class ElementSerializer {
             fontName: element.fontName,
             fontColor: element.fontColor,
             fontSize: element.fontSize,
+            defaultFontName: element.fontName,
+            defaultColor: element.fontColor,
+            defaultFontSize: element.fontSize,
             ...(fontGradient ? { fontGradient } : {}),
             vertical: element.vertical,
             verticalType: element.verticalType,
@@ -85,10 +83,14 @@ export class ElementSerializer {
             lineHeight: element.lineHeight,
             paragraphSpace: element.paragraphSpace,
             alignH: element.alignH,
+            align: element.alignH,
             alignV: element.alignV,
+            vAlign: element.alignV,
+            verticalAlign: element.alignV,
             autoFit: element.autoFit,
             wrapText: element.wrapText,
             labelType: element.labelType,
+            textType: element.labelType,
             marginLeft: element.marginLeft,
             marginRight: element.marginRight,
             marginTop: element.marginTop,
@@ -111,6 +113,7 @@ export class ElementSerializer {
             keypoints: element.keypoints,
             text: element.text,
             labelType: element.labelType,
+            textType: element.labelType,
         }
     }
 
@@ -124,6 +127,7 @@ export class ElementSerializer {
             colorMask2: element.colorMask2,
             filters: element.filters,
             labelType: element.labelType,
+            textType: element.labelType,
         }
     }
 
@@ -140,7 +144,6 @@ export class ElementSerializer {
             broken2: element.broken2,
             cubic: element.cubic,
             strokeWidth: element.strokeWidth,
-            // shapeType: element.shapeType,
         }
     }
 
@@ -149,7 +152,7 @@ export class ElementSerializer {
             chartType: element.chartType,
             title: element.title,
             themeColors: element.themeColors,
-            // textColor: element.textColor,
+            themeFollowSlide: element.themeFollowSlide,
             data: element.data,
             options: element.options,
             fill: element.fill,

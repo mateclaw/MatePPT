@@ -15,7 +15,6 @@ export default defineConfig({
     "@umijs/plugins/dist/access",
     "@umijs/plugins/dist/initial-state",
     "@umijs/plugins/dist/model",
-    "@umijs/plugins/dist/tailwindcss",
     "@umijs/plugins/dist/locale",
     // "@umijs/plugins/dist/icons",
   ],
@@ -114,6 +113,19 @@ export default defineConfig({
       target: `http://${server2}:8081/`,
       changeOrigin: true,
     },
+    "/demo": {
+      target: "https://api.mateppt.codingfgd.asia",
+      changeOrigin: true,
+      secure: true,
+    },
+    "/__oss_proxy": {
+      target: "https://mateppt.oss-cn-shanghai.aliyuncs.com",
+      changeOrigin: true,
+      secure: true,
+      pathRewrite: {
+        "^/__oss_proxy": "",
+      },
+    },
     "/aiavatar/api": {
       target: `http://${server2}:8087/`,
       changeOrigin: true,
@@ -122,6 +134,4 @@ export default defineConfig({
   },
   esbuildMinifyIIFE: true,
   // vite: {},
-  tailwindcss: {},
-
 });

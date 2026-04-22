@@ -51,7 +51,9 @@ const BackgroundDrawer: React.FC<BackgroundDrawerProps> = ({ isOpen, onClose }) 
 
 
   const [tempSrc, setTempSrc] = useState('');
-  const uploadPath = useMemo(() => `pptProject/${projectId}/background`, [projectId]);
+  const slideId = (currentSlide as any)?.slideId;
+  const canUploadToProject = !!projectId && !!slideId;
+  const uploadPath = useMemo(() => (canUploadToProject ? `pptProject/${projectId}/background` : ''), [canUploadToProject, projectId]);
   const uploaderRef = useRef<S3UploaderSimpleRef>(null);
   const [fileList, setFileList] = useState<any>([]);
 
@@ -137,10 +139,7 @@ const BackgroundDrawer: React.FC<BackgroundDrawerProps> = ({ isOpen, onClose }) 
   const [isUploading, setIsUploading] = useState(false);
 
   const getUploadTarget = useMemoizedFn(async (file: File) => {
-    const slideId = (currentSlide as any)?.slideId;
-    if (!slideId) {
-      throw new Error('当前页面缺少 slideId，无法获取上传地址');
-    }
+    if (!canUploadToProject) return null;
     const request = {
       fileName: file.name,
       projectId,
@@ -243,7 +242,7 @@ const BackgroundDrawer: React.FC<BackgroundDrawerProps> = ({ isOpen, onClose }) 
                           manualUpload={true}
                           fileList={fileList}
                           setFileList={setFileList}
-                          getUploadTarget={getUploadTarget}
+                          getUploadTarget={canUploadToProject ? getUploadTarget : undefined}
                         />
                       </div>
                       <Button

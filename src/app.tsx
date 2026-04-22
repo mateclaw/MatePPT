@@ -17,6 +17,7 @@ import { useTitle, useFavicon } from "ahooks";
 // 根组件中
 import 'cherry-markdown/dist/cherry-markdown.css';
 import '@/styles/fonts.scss';
+import '../tailwind.out.css';
 import { initGlobalMessage } from '@/utils/message-utils';
 import { useMenus } from "@/hooks/menu-hooks";
 import "dayjs/locale/zh-cn";

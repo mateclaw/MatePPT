@@ -54,10 +54,11 @@ export const ImageElementPanel: React.FC<ImageElementPanelProps> = () => {
   const slide = slidesStore.slides[slidesStore.slideIndex] as any
   const slideId = slide?.slideId
   const slideNo = slide?.slideNo || slidesStore.slideIndex + 1
+  const canUploadToProject = !!projectId && !!slideId
   const elementUploadPath = useMemo(() => {
-    if (!projectId) return ''
+    if (!canUploadToProject) return ''
     return `pptProject/${projectId}/slides/${slideNo}/elements`
-  }, [projectId, slideNo])
+  }, [canUploadToProject, projectId, slideNo])
 
   const resetAiState = () => {
     aiRequestRef.current?.unsubscribe()
@@ -231,8 +232,7 @@ export const ImageElementPanel: React.FC<ImageElementPanelProps> = () => {
   }, [])
 
   const getPptElementUploadTarget = async (file: File) => {
-    if (!projectId) throw new Error('项目ID缺失，无法上传')
-    if (!slideId) throw new Error('当前页面缺少 slideId，无法上传')
+    if (!canUploadToProject) return null
     const request = {
       fileName: file.name,
       fileSize: file.size,
@@ -556,7 +556,7 @@ export const ImageElementPanel: React.FC<ImageElementPanelProps> = () => {
                     uploadPath={elementUploadPath}
                     uploadTypes="preset:pic"
                     uploadMaxCount={1}
-                    getUploadTarget={getPptElementUploadTarget}
+                    getUploadTarget={canUploadToProject ? getPptElementUploadTarget : undefined}
                     onSuccess={(data: any) => {
                       const url = resolveUploadUrl(data)
                       if (url) {

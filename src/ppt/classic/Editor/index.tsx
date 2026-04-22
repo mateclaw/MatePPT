@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+﻿import { useEffect, useMemo, useRef, useState } from 'react'
 import { Button, ConfigProvider, FloatButton, Modal, App, Input, Tabs } from 'antd'
 import { Icon } from 'umi'
 
@@ -12,7 +12,6 @@ import Thumbnails from './Thumbnails'
 // import Toolbar from './Toolbar'
 import Remark from './Remark'
 
-import ExportDialog from './ExportDialog'
 import SelectPanel from './SelectPanel'
 import SearchPanel from './SearchPanel'
 // import NotesPanel from './NotesPanel'
@@ -28,7 +27,9 @@ import { type ThemeColors, THEME_COLOR_KEYS } from '@/ppt/core/entity/presentati
 import { PptProjectSlidePo } from '@/models/pptProjectSlidePo'
 import type { PptDocumentData } from '@/stores/pptProjectStore'
 import { PptProjectStatus, TextElement, type ChartType } from '@/ppt/core'
+import useExport from '@/ppt/hooks/useExport'
 import { useExportPolling } from '@/ppt/hooks/useExportPolling'
+import useScreening from '@/ppt/hooks/useScreening'
 import { ClassicModeToolbar } from './EditorToolbar/ClassicModeToolbar'
 import { BottomToolbar } from './EditorToolbar/BottomToolbar'
 import { RightToolbar } from './EditorToolbar/RightToolbar'
@@ -37,7 +38,6 @@ import { useSlidesStore } from '@/ppt/store/useSlidesStore'
 import { useSnapshotStore } from '@/ppt/store/useSnapshotStore'
 import useHistorySnapshot from '@/ppt/hooks/useHistorySnapshot'
 import useScaleCanvas from '@/ppt/hooks/useScaleCanvas'
-import useScreening from '@/ppt/hooks/useScreening'
 import { normalizePPTColor } from '@/ppt/core/utils/pptColor'
 import LayoutDrawer from '@/ppt/classic/Editor/LayoutDrawer'
 import TemplateDrawer from '@/ppt/classic/Editor/TemplateDrawer'
@@ -86,26 +86,22 @@ export default function Editor({
   loadingMoreSlides,
 }: EditorProps) {
   const {
-    dialogForExport,
     showSelectPanel,
     showSearchPanel,
     showNotesPanel,
     showSymbolPanel,
     showMarkupPanel,
     showAIPPTDialog,
-    setDialogForExport,
     setShowAIPPTDialog,
     hideFloatButton,
 
   } = useMainStore(useShallow((state) => ({
-    dialogForExport: state.dialogForExport,
     showSelectPanel: state.showSelectPanel,
     showSearchPanel: state.showSearchPanel,
     showNotesPanel: state.showNotesPanel,
     showSymbolPanel: state.showSymbolPanel,
     showMarkupPanel: state.showMarkupPanel,
     showAIPPTDialog: state.showAIPPTDialog,
-    setDialogForExport: state.setDialogForExport,
     setShowAIPPTDialog: state.setShowAIPPTDialog,
     hideFloatButton: state.activeElementIdList.length > 0,
 
@@ -280,7 +276,7 @@ export default function Editor({
       const { slides } = slidesStore;
       const dirtySlides = slides.filter((slide) => (slide as any).dirty);
       if (!dirtySlides.length) {
-        message.info('暂无需要保存的更改');
+        message.info('当前没有需要保存的更改');
         return;
       }
       await saveClassicSlidesToBackend(projectId, dirtySlides);
@@ -295,23 +291,41 @@ export default function Editor({
       message.error('PPT 保存失败');
     }
   });
+  const { exportPPTX, exporting } = useExport();
   const { startPolling, isPolling } = useExportPolling();
-  const handleExport = useMemoizedFn((exportFormat: string) => {
-    if (!projectId || !createMode) {
-      message.error('项目ID不存在，无法导出');
+  const { enterScreening, enterScreeningFromStart } = useScreening();
+  const handleExport = useMemoizedFn(async () => {
+    if (typeof projectId === 'number' && createMode) {
+      await handleSave();
+      startPolling({
+        projectId,
+        createMode,
+        exportFormat: 'pptx',
+      });
       return;
     }
-    startPolling({
-      projectId,
-      createMode: createMode,
-      exportFormat,
+
+    await exportPPTX(slides, true, false, {
+      title: title || projectDetail?.projectName || '未命名演示文稿',
+      width: viewportSize,
+      height: viewportSize * viewportRatio,
     });
   });
-  const { slideIndex, slides, themeColors } = useSlidesStore(
+  const handlePreview = useMemoizedFn((fromCurrent: boolean) => {
+    if (fromCurrent) {
+      enterScreening();
+      return;
+    }
+    enterScreeningFromStart();
+  });
+  const { slideIndex, slides, themeColors, title, viewportSize, viewportRatio } = useSlidesStore(
     useShallow((state) => ({
       slideIndex: state.slideIndex,
       slides: state.slides,
       themeColors: state.theme?.themeColors,
+      title: state.title,
+      viewportSize: state.viewportSize,
+      viewportRatio: state.viewportRatio,
     }))
   );
   const setTheme = useSlidesStore(useShallow((state) => state.setTheme));
@@ -329,7 +343,6 @@ export default function Editor({
   const canRedo = snapshotCursor >= 0 && snapshotCursor < snapshotLength - 1;
   const { undo, redo, addHistorySnapshot } = useHistorySnapshot();
   const { setCanvasScaleByRatio, resetCanvas, scaleCanvas } = useScaleCanvas();
-  const { enterScreening, enterScreeningFromStart } = useScreening();
   const isApplyingSnapshotRef = useRef(false);
   const [isLayoutDrawerOpen, setIsLayoutDrawerOpen] = useState(false);
   const [isTemplateDrawerOpen, setIsTemplateDrawerOpen] = useState(false);
@@ -405,6 +418,7 @@ export default function Editor({
 
   const slide = slides[slideIndex] as PPTSlide & { slideId?: number };
   const slideId = slide?.slideId;
+  const canUploadToProject = !!projectId && !!slideId;
 
   const resolveUploadUrl = (data: any) => {
     return (
@@ -422,35 +436,31 @@ export default function Editor({
   };
 
   const elementUploadPath = useMemo(() => {
-    if (!projectId) return '';
-    const slideId = resolveSlideId();
-    if (!slideId) return '';
-    return `pptProject/${projectId}/slides/${slideId}/elements`;
-  }, [projectId, slideIndex, slides]);
+    if (!canUploadToProject) return '';
+    const resolvedSlideId = resolveSlideId();
+    if (!resolvedSlideId) return '';
+    return `pptProject/${projectId}/slides/${resolvedSlideId}/elements`;
+  }, [canUploadToProject, projectId, slideIndex, slides]);
   const videoUploadTypes = '.mp4,.mov,.webm,.mkv,.m3u8,.flv';
   const audioUploadTypes = '.mp3,.wav,.aac,.m4a,.ogg,.flac';
 
   const getPptElementUploadTarget = useMemoizedFn(async (file: File) => {
-    if (!projectId) {
-      throw new Error('项目ID缺失，无法上传');
-    }
-    const slideId = resolveSlideId();
-    if (!slideId) {
-      throw new Error('当前页面缺少 slideId，无法上传');
-    }
+    if (!canUploadToProject) return null;
+    const resolvedSlideId = resolveSlideId();
+    if (!resolvedSlideId) return null;
     const request = {
       fileName: file.name,
       fileSize: file.size,
       fileType: file.type,
       projectId,
-      slideId: String(slideId),
+      slideId: String(resolvedSlideId),
     } as FileInfoVo;
     const response = await lastValueFrom(s3service.getPptSlideUploadUrl(request));
     if (!response || response.code !== 0 || !response.data) {
-      throw new Error(response?.msg || '获取上传地址失败');
+      throw new Error(response?.msg || '閼惧嘲褰囨稉濠佺炊閸︽澘娼冩径杈Е');
     }
     return buildDirectUploadTarget(String(response.data));
-  });
+  }, [canUploadToProject, projectId, resolveSlideId]);
 
   const resetImageModal = () => {
     setImageInputModalVisible(false);
@@ -535,7 +545,7 @@ export default function Editor({
         try {
           return JSON.parse(raw) as Record<string, string>;
         } catch (error) {
-          console.warn('[classic] 解析主题色失败:', error);
+          console.warn('[classic] 鐟欙絾鐎芥稉濠氼暯閼规彃銇戠拹?', error);
           return null;
         }
       }
@@ -562,7 +572,7 @@ export default function Editor({
         try {
           return JSON.parse(rawColors) as ThemeColors;
         } catch (error) {
-          console.warn('[classic] 解析主题色失败:', error);
+          console.warn('[classic] 鐟欙絾鐎芥稉濠氼暯閼规彃銇戠拹?', error);
           return null;
         }
       }
@@ -576,7 +586,7 @@ export default function Editor({
         try {
           return JSON.parse(raw);
         } catch (error) {
-          console.warn('[classic] 解析 slideJson 失败:', error);
+          console.warn('[classic] 鐟欙絾鐎?slideJson 婢惰精瑙?', error);
           return undefined;
         }
       })();
@@ -768,7 +778,7 @@ export default function Editor({
       try {
         return JSON.parse(raw);
       } catch (error) {
-        console.warn('[classic] 解析主题色失败:', error);
+        console.warn('[classic] 鐟欙絾鐎芥稉濠氼暯閼规彃銇戠拹?', error);
         return null;
       }
     };
@@ -865,21 +875,15 @@ export default function Editor({
         <div className={styles['layout-header']}>
           {/* <EditorHeader /> */}
           <TopToolbar
-            title={projectDetail?.projectName || 'Untitled PPT'}
+            title={projectDetail?.projectName || '未命名演示文稿'}
             lastSavedTime={projectDetail?.createTime}
 
             isCompleted={projectDetail?.status === PptProjectStatus.Completed || projectDetail?.status === PptProjectStatus.Failed}
             onBack={onBack}
-            onPreview={(fromCurrent) => {
-              if (fromCurrent) {
-                enterScreening();
-              } else {
-                enterScreeningFromStart();
-              }
-            }}
             onSave={generatingPpt ? null : handleSave}
-            onExport={generatingPpt ? null : handleExport}
-            isExporting={isPolling}
+            onPreview={generatingPpt ? undefined : handlePreview}
+            onExport={generatingPpt ? undefined : handleExport}
+            isExporting={exporting || isPolling}
 
 
             centerSlot={
@@ -946,8 +950,7 @@ export default function Editor({
                       className="flex flex-col gap-0 h-12 text-xs w-12"
                       onClick={() => setIsLayoutDrawerOpen(true)}
                     >
-                      布局
-                    </Button>
+                      鐢啫鐪?                    </Button>
                   )}
 
                   <Button
@@ -956,24 +959,21 @@ export default function Editor({
                     className="flex flex-col gap-0 h-12 text-xs w-12"
                     onClick={() => setIsBackgroundDrawerOpen(true)}
                   >
-                    背景
-                  </Button>
+                    閼冲本娅?                  </Button>
                   <Button
                     icon={<Icon icon="local:ppt/icon-magic" />}
                     type="text"
                     className="flex flex-col gap-0 h-12 text-xs w-12"
                     onClick={() => setIsTemplateDrawerOpen(true)}
                   >
-                    模板
-                  </Button>
+                    濡剝婢?                  </Button>
                   <Button
                     icon={<Icon icon="local:ppt/icon-palette" />}
                     type="text"
                     className="flex flex-col gap-0 h-12 text-xs w-12"
                     onClick={() => setIsThemeDrawerOpen(true)}
                   >
-                    主题
-                  </Button>
+                    娑撳顣?                  </Button>
                 </FloatButton.Group>
               </ConfigProvider>
             )}
@@ -1010,13 +1010,7 @@ export default function Editor({
             }}
             onFitToScreen={resetCanvas}
             onToggleNotes={handleToggleNotes}
-            onPlay={(fromCurrent) => {
-              if (fromCurrent) {
-                enterScreening();
-              } else {
-                enterScreeningFromStart();
-              }
-            }}
+            onPlay={generatingPpt ? undefined : handlePreview}
           />
         </div>
       </div>
@@ -1026,16 +1020,6 @@ export default function Editor({
       {/* {showNotesPanel && <NotesPanel />} */}
       {showMarkupPanel && <MarkupPanel />}
       {showSymbolPanel && <SymbolPanel />}
-
-      <Modal
-        open={!!dialogForExport}
-        width={680}
-        footer={null}
-        onCancel={() => setDialogForExport('')}
-        destroyOnHidden
-      >
-        <ExportDialog />
-      </Modal>
 
       <Modal
         open={showAIPPTDialog}
@@ -1065,14 +1049,14 @@ export default function Editor({
           items={[
             {
               key: 's3',
-              label: 'S3 上传',
+              label: '上传文件',
               children: (
                 <div style={{ paddingTop: '12px' }}>
                   <S3Uploader
                     uploadPath={elementUploadPath}
                     uploadTypes="preset:pic"
                     uploadMaxCount={1}
-                    getUploadTarget={getPptElementUploadTarget}
+                    getUploadTarget={canUploadToProject ? getPptElementUploadTarget : undefined}
                     onSuccess={(data: any) => {
                       const url = resolveUploadUrl(data);
                       if (url) {
@@ -1123,14 +1107,14 @@ export default function Editor({
           items={[
             {
               key: 's3',
-              label: 'S3 上传',
+              label: '上传文件',
               children: (
                 <div style={{ paddingTop: '12px' }}>
                   <S3Uploader
                     uploadPath={elementUploadPath}
                     uploadTypes={videoUploadTypes}
                     uploadMaxCount={1}
-                    getUploadTarget={getPptElementUploadTarget}
+                    getUploadTarget={canUploadToProject ? getPptElementUploadTarget : undefined}
                     onSuccess={(data: any) => {
                       const url = resolveUploadUrl(data);
                       if (url) {
@@ -1181,14 +1165,14 @@ export default function Editor({
           items={[
             {
               key: 's3',
-              label: 'S3 上传',
+              label: '上传文件',
               children: (
                 <div style={{ paddingTop: '12px' }}>
                   <S3Uploader
                     uploadPath={elementUploadPath}
                     uploadTypes={audioUploadTypes}
                     uploadMaxCount={1}
-                    getUploadTarget={getPptElementUploadTarget}
+                    getUploadTarget={canUploadToProject ? getPptElementUploadTarget : undefined}
                     onSuccess={(data: any) => {
                       const url = resolveUploadUrl(data);
                       if (url) {
@@ -1260,3 +1244,4 @@ export default function Editor({
     </>
   )
 }
+

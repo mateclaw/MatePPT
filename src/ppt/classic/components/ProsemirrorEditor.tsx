@@ -79,6 +79,7 @@ interface ProsemirrorEditorProps {
   value: string
   defaultColor: string
   defaultFontName: string
+  defaultFontSize?: number
   editable?: boolean
   autoFocus?: boolean
   onUpdate?: (payload: { value: string; ignore: boolean }) => void
@@ -108,6 +109,7 @@ export const ProsemirrorEditor = React.forwardRef<
   value,
   defaultColor,
   defaultFontName,
+  defaultFontSize,
   editable = false,
   autoFocus = false,
   onUpdate,
@@ -194,11 +196,12 @@ export const ProsemirrorEditor = React.forwardRef<
       const attrs = getTextAttrs(editorViewRef.current, {
         color: defaultColor,
         fontname: defaultFontName,
+        fontsize: defaultFontSize ? `${defaultFontSize}px` : undefined,
       })
       setRichTextAttrs(attrs)
       onAttrsChange?.(attrs)
     }, 30)
-  }, [defaultColor, defaultFontName, onAttrsChange, setRichTextAttrs, updateLastSelection])
+  }, [defaultColor, defaultFontName, defaultFontSize, onAttrsChange, setRichTextAttrs, updateLastSelection])
 
   const handleKeydown = useMemoizedFn((_: EditorView, e: KeyboardEvent) => {
     const { ctrlKey, shiftKey, metaKey } = e

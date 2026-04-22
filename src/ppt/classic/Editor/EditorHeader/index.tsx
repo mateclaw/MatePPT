@@ -234,19 +234,6 @@ export default function EditorHeader() {
       </div>
 
       <div className={styles.right}>
-        <div className={styles['group-menu-item']}>
-          <Tooltip title="幻灯片放映（F5）">
-            <div className={styles['menu-item']} onClick={enterScreening}>
-              <Icon className={styles.icon} icon="ri:slideshow-3-line" />
-            </div>
-          </Tooltip>
-          <Popover trigger="click" placement="bottom" content={screeningMenu}>
-            <div className={styles['arrow-btn']}>
-              <Icon className={styles.arrow} icon="ri:arrow-down-s-line" />
-            </div>
-          </Popover>
-        </div>
-
         <Tooltip title="AI生成PPT">
           <div className={styles['menu-item']} onClick={openAIPPTDialog}>
             <span className={`${styles.text} ${styles.ai}`}>AI</span>

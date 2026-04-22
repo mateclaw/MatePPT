@@ -74,13 +74,13 @@ export default function BaseView({ changeViewMode }: BaseViewProps) {
   const contextmenus = useMemoizedFn((): ContextmenuItem[] => [
     {
       text: '上一页',
-      subText: '↑ ←',
+      subText: '←',
       disable: slideIndex <= 0,
       handler: () => turnPrevSlide(),
     },
     {
       text: '下一页',
-      subText: '↓ →',
+      subText: '→',
       disable: slideIndex >= slides.length - 1,
       handler: () => turnNextSlide(),
     },
@@ -100,30 +100,30 @@ export default function BaseView({ changeViewMode }: BaseViewProps) {
       handler: autoPlayTimer ? closeAutoPlay : autoPlay,
       children: [
         {
-          text: '2.5秒',
-          subText: autoPlayInterval === 2500 ? '√' : '',
+          text: '2.5 秒',
+          subText: autoPlayInterval === 2500 ? '✓' : '',
           handler: () => setAutoPlayInterval(2500),
         },
         {
-          text: '5秒',
-          subText: autoPlayInterval === 5000 ? '√' : '',
+          text: '5 秒',
+          subText: autoPlayInterval === 5000 ? '✓' : '',
           handler: () => setAutoPlayInterval(5000),
         },
         {
-          text: '7.5秒',
-          subText: autoPlayInterval === 7500 ? '√' : '',
+          text: '7.5 秒',
+          subText: autoPlayInterval === 7500 ? '✓' : '',
           handler: () => setAutoPlayInterval(7500),
         },
         {
-          text: '10秒',
-          subText: autoPlayInterval === 10000 ? '√' : '',
+          text: '10 秒',
+          subText: autoPlayInterval === 10000 ? '✓' : '',
           handler: () => setAutoPlayInterval(10000),
         },
       ],
     },
     {
       text: '循环放映',
-      subText: loopPlay ? '√' : '',
+      subText: loopPlay ? '✓' : '',
       handler: () => setLoopPlay(!loopPlay),
     },
     { divider: true },
@@ -136,8 +136,8 @@ export default function BaseView({ changeViewMode }: BaseViewProps) {
       handler: () => setSlideThumbnailModelVisible(true),
     },
     {
-      text: '触底显示缩略图',
-      subText: bottomThumbnailsVisible ? '√' : '',
+      text: '底部显示缩略图',
+      subText: bottomThumbnailsVisible ? '✓' : '',
       handler: () => setBottomThumbnailsVisible((prev) => !prev),
     },
     {

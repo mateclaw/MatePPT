@@ -1,13 +1,14 @@
 import React from 'react';
-import { Button, Dropdown, Popover } from 'antd';
+import { Button, Dropdown, type MenuProps } from 'antd';
 import {
   UndoOutlined,
   RedoOutlined,
   CommentOutlined,
   ZoomInOutlined,
   ZoomOutOutlined,
-  PlayCircleOutlined,
   FullscreenOutlined,
+  CaretRightOutlined,
+  DownOutlined,
 } from '@ant-design/icons';
 
 export interface BottomToolbarProps {
@@ -22,12 +23,9 @@ export interface BottomToolbarProps {
   onScaleChange: (scale: number) => void;
   onFitToScreen: () => void;
   onToggleNotes: () => void;
-  onPlay: (fromCurrent: boolean) => void;
+  onPlay?: (fromCurrent: boolean) => void;
 }
 
-/**
- * 底部工具栏组件
- */
 export const BottomToolbar: React.FC<BottomToolbarProps> = ({
   currentIndex,
   totalSlides,
@@ -42,7 +40,18 @@ export const BottomToolbar: React.FC<BottomToolbarProps> = ({
   onToggleNotes,
   onPlay,
 }) => {
-  const [showPlayOptions, setShowPlayOptions] = React.useState(false);
+  const playMenuItems: MenuProps['items'] = [
+    {
+      key: 'current',
+      label: '从当前页放映',
+      onClick: () => onPlay?.(true),
+    },
+    {
+      key: 'start',
+      label: '从第一页放映',
+      onClick: () => onPlay?.(false),
+    },
+  ];
 
   return (
     <div
@@ -56,34 +65,27 @@ export const BottomToolbar: React.FC<BottomToolbarProps> = ({
         justifyContent: 'space-between',
         padding: '0 15px',
         position: 'relative',
-        zIndex: 100
+        zIndex: 100,
       }}
     >
-      {/* 左侧工具栏 */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
         <span>第 {totalSlides > 0 ? currentIndex + 1 : 0} 页 / 共 {totalSlides} 页</span>
-        <Button
-          type="text"
-          className='p-0 hidden md:inline-flex'
-          icon={<UndoOutlined />}
-          onClick={onUndo}
-          disabled={!canUndo}
-        >
+        <Button type="text" className="p-0 hidden md:inline-flex" icon={<UndoOutlined />} onClick={onUndo} disabled={!canUndo}>
           撤销
         </Button>
-        <Button
-          type="text"
-          className='p-0 hidden md:inline-flex'
-          icon={<RedoOutlined />}
-          onClick={onRedo}
-          disabled={!canRedo}
-        >
+        <Button type="text" className="p-0 hidden md:inline-flex" icon={<RedoOutlined />} onClick={onRedo} disabled={!canRedo}>
           重做
         </Button>
       </div>
 
-      {/* 右侧工具栏 */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+        {onPlay && (
+          <Dropdown menu={{ items: playMenuItems }} trigger={['click']} placement="topRight">
+            <Button type="text" icon={<CaretRightOutlined />}>
+              放映 <DownOutlined />
+            </Button>
+          </Dropdown>
+        )}
         <Button
           type="text"
           icon={<CommentOutlined />}
@@ -111,56 +113,6 @@ export const BottomToolbar: React.FC<BottomToolbarProps> = ({
             适应屏幕
           </Button>
         </div>
-
-        {/* <Popover
-          content={
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <Button
-                type="text"
-                block
-                onClick={() => {
-                  onPlay(false);
-                  setShowPlayOptions(false);
-                }}
-              >
-                从头开始放映
-              </Button>
-              <Button
-                type="text"
-                block
-                onClick={() => {
-                  onPlay(true);
-                  setShowPlayOptions(false);
-                }}
-              >
-                从当前幻灯片开始放映
-              </Button>
-            </div>
-          }
-          title="放映选项"
-          trigger="click"
-          open={showPlayOptions}
-          onOpenChange={setShowPlayOptions}
-        >
-          <Button
-            type="primary"
-            icon={<PlayCircleOutlined />}
-          >
-            放映
-          </Button>
-        </Popover> */}
-
-        <Dropdown trigger={['click']} menu={{ items: [{ label: '从当前页开始放映', key: 'current' }, { label: '从头开始放映', key: 'start' }], onClick: (e) => onPlay(e.key === 'current') }}>
-
-
-          <Button
-            type="primary"
-            icon={<PlayCircleOutlined />}
-          >
-            放映
-          </Button>
-
-        </Dropdown>
       </div>
     </div>
   );

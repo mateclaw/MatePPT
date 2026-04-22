@@ -38,6 +38,11 @@ interface TemplatesPage {
     hasMore: boolean;
 }
 
+const normalizePagedResult = (response: any) => ({
+    data: response?.data?.data || response?.data || [],
+    total: response?.data?.total || response?.total || 0,
+});
+
 const pptTemplateService = PptTemplateService.getInstance();
 const pptTemplateSceneService = PptSceneService.getInstance();
 const pptTemplateStyleService = PptStyleService.getInstance();
@@ -182,12 +187,13 @@ export default function PptTemplateSelector({ nextStep, templates: propTemplates
             }
 
             const response = await lastValueFrom(req);
+            const normalized = normalizePagedResult(response);
 
             return {
-                data: response.data || [],
-                total: response.total || 0,
+                data: normalized.data,
+                total: normalized.total,
                 page: currentPage,
-                hasMore: response.total > currentPage * 8
+                hasMore: normalized.total > currentPage * 8
             };
         },
         getNextPageParam: (lastPage) => {

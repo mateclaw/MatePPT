@@ -31,7 +31,7 @@ export interface ClassicModeToolbarProps {
 }
 
 /**
- * 经典模式顶部工具栏中间部分
+ * 经典模式顶部工具栏中间区域
  * 提供添加各种元素的功能
  */
 export const ClassicModeToolbar: React.FC<ClassicModeToolbarProps> = ({
@@ -70,7 +70,7 @@ export const ClassicModeToolbar: React.FC<ClassicModeToolbarProps> = ({
 
   return (
     <div className="flex items-center gap-2">
-      {/* 添加文本 */}
+      {/* 添加文字 */}
       {onAddText && (
         <Popover
           trigger="click"

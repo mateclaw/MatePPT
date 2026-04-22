@@ -36,6 +36,13 @@ export default function CommonElementOperate({
   const { resizeHandlers, borderLines } = useCommonOperate(scaleWidth, scaleHeight)
 
   const cannotRotate = elementInfo.type === 'chart' || elementInfo.type === 'video' || elementInfo.type === 'audio'
+  const getBorderResizeCommand = (type: string) => {
+    if (type === 'top') return OperateResizeHandlers.TOP
+    if (type === 'bottom') return OperateResizeHandlers.BOTTOM
+    if (type === 'left') return OperateResizeHandlers.LEFT
+    if (type === 'right') return OperateResizeHandlers.RIGHT
+    return null
+  }
 
   return (
     <div className="common-element-operate">
@@ -43,8 +50,21 @@ export default function CommonElementOperate({
         <BorderLine
           key={line.type}
           type={line.type}
-          style={line.style}
+          isWide
+          style={{
+            ...line.style,
+            cursor:
+              line.type === 'top' || line.type === 'bottom'
+                ? 'ns-resize'
+                : 'ew-resize',
+          }}
           className="operate-border-line"
+          onMouseDown={(e) => {
+            const command = getBorderResizeCommand(line.type)
+            if (!command) return
+            e.stopPropagation()
+            scaleElement(e.nativeEvent, elementInfo, command)
+          }}
         />
       ))}
 

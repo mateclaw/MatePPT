@@ -109,13 +109,13 @@ export default function PresenterView({ changeViewMode }: PresenterViewProps) {
   const contextmenus = useMemoizedFn((): ContextmenuItem[] => [
     {
       text: '上一页',
-      subText: '↑ ←',
+      subText: '←',
       disable: slideIndex <= 0,
       handler: () => turnPrevSlide(),
     },
     {
       text: '下一页',
-      subText: '↓ →',
+      subText: '→',
       disable: slideIndex >= slides.length - 1,
       handler: () => turnNextSlide(),
     },

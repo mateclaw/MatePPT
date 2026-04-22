@@ -45,6 +45,30 @@ const moduleRoutes: iRoute[] = [
     component: `@/pages/${moduleName}/ppt-my-works`,
     submenuRender: true,
   },
+  {
+    path: '/ppt/my-templates',
+    meta: {},
+    component: `@/pages/${moduleName}/ppt-my-templates`,
+    submenuRender: true,
+  },
+  {
+    path: '/ppt/template-market',
+    meta: {},
+    component: `@/pages/${moduleName}/ppt-template-market`,
+    submenuRender: true,
+  },
+  {
+    path: '/ppt/my-templates/new',
+    meta: {},
+    component: `@/pages/${moduleName}/ppt-new-template`,
+    submenuRender: true,
+  },
+  {
+    path: '/ppt/my-templates/:id',
+    meta: {},
+    component: `@/pages/${moduleName}/ppt-annotate-template`,
+    submenuRender: false,
+  },
 ];
 
 export default moduleRoutes;

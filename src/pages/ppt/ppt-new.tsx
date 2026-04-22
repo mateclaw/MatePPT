@@ -73,6 +73,7 @@ const PptNewPage: React.FC = () => {
   const generateOutline = useCallback(
     async (userInput: string, metaData: MetaDataVo) => {
       try {
+        const stateParams = location.state as any;
         setIsLoading(true);
         resetProject();
         outlineDataRef.current = null;
@@ -83,6 +84,7 @@ const PptNewPage: React.FC = () => {
           metaData,
           createMode: 'classic',
           sourceType: 'user_input',
+          templateId: stateParams?.templateId,
         } as PptProjectPo;
 
         const createRes = await new Promise<any>((resolve, reject) => {
@@ -103,7 +105,7 @@ const PptNewPage: React.FC = () => {
         setIsLoading(false);
       }
     },
-    [loadProjectDetail, message, outlineMateChat, resetProject, setProjectId],
+    [loadProjectDetail, location.state, message, outlineMateChat, resetProject, setProjectId],
   );
 
   useEffect(() => {

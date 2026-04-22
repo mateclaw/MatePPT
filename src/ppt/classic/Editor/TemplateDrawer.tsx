@@ -34,6 +34,11 @@ interface TemplatesPage {
   hasMore: boolean;
 }
 
+const normalizePagedResult = (response: any) => ({
+  data: response?.data?.data || response?.data || [],
+  total: response?.data?.total || response?.total || 0,
+});
+
 const pptSlideClassicService = ClassicService.getInstance();
 const pptTemplateService = PptTemplateService.getInstance();
 const pptTemplateStyleService = PptStyleService.getInstance();
@@ -159,12 +164,13 @@ const TemplateDrawer: React.FC<TemplateDrawerProps> = ({
       }
 
       const response = await lastValueFrom(req);
+      const normalized = normalizePagedResult(response);
 
       return {
-        data: response.data || [],
-        total: response.total || 0,
+        data: normalized.data,
+        total: normalized.total,
         page: currentPage,
-        hasMore: response.total > currentPage * pageSize
+        hasMore: normalized.total > currentPage * pageSize
       };
     },
     getNextPageParam: (lastPage) => {

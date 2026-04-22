@@ -1,9 +1,9 @@
 import clsx from 'clsx'
-import type { CSSProperties } from 'react'
+import type { CSSProperties, HTMLAttributes } from 'react'
 import styles from './BorderLine.module.scss'
 import type { OperateBorderLines } from '@/ppt/types/edit'
 
-interface BorderLineProps {
+interface BorderLineProps extends HTMLAttributes<HTMLDivElement> {
   type: OperateBorderLines
   isWide?: boolean
   style?: CSSProperties
@@ -15,9 +15,11 @@ export default function BorderLine({
   isWide = false,
   style,
   className,
+  ...rest
 }: BorderLineProps) {
   return (
     <div
+      {...rest}
       className={clsx(
         styles['border-line'],
         styles[type],       // top / bottom / left / right

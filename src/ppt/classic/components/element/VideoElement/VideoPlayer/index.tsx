@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+﻿import React, { useEffect, useMemo, useRef, useState } from 'react'
 import clsx from 'clsx'
 import { useMemoizedFn } from 'ahooks'
 import useMSE from './useMSE'
@@ -68,6 +68,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     return `${(loaded / duration) * 100}%`
   }, [loaded, duration])
   const volumeBarWidth = useMemo(() => `${volume * 100}%`, [volume])
+  const showPosterOverlay = !!poster && (paused || currentTime === 0)
 
   const speedOptions = useMemo(() => {
     return [
@@ -337,6 +338,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
           }}
           onError={handleError}
         />
+        {showPosterOverlay && (
+          <div
+            className={styles.posterOverlay}
+            style={{ backgroundImage: `url(${poster})` }}
+          />
+        )}
         <div className={styles.bezel}>
           <span
             className={clsx(styles.bezelIcon, bezelTransition && styles.bezelTransition)}
@@ -469,3 +476,4 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 }
 
 export default VideoPlayer
+

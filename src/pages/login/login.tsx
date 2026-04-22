@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button, Input, Form, Checkbox, App } from "antd";
 import type { FormProps } from 'antd';
 import type { UserPo } from "@/models/userPo";
@@ -25,10 +25,19 @@ import LoginForm from "@/components/base/login-form";
 const LoginPage = () => {
     const userService = UserService.getInstance();
     const { setUserInfo, setAccessToken } = useUserStore();
+    const accessToken = useUserStore((state) => state.accessToken);
+    const userInfo = useUserStore((state) => state.userInfo);
     const { message } = App.useApp();
 
     const { t } = useTranslate();
     const { appName } = useSystemStore();
+
+    useEffect(() => {
+        if (accessToken && userInfo?.userId) {
+            history.replace('/');
+        }
+    }, [accessToken, userInfo?.userId]);
+
     const ms = () => {
         message.success(t('login.logged'));
     }
