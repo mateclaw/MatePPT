@@ -457,7 +457,7 @@ export default function Editor({
     } as FileInfoVo;
     const response = await lastValueFrom(s3service.getPptSlideUploadUrl(request));
     if (!response || response.code !== 0 || !response.data) {
-      throw new Error(response?.msg || '閼惧嘲褰囨稉濠佺炊閸︽澘娼冩径杈Е');
+      throw new Error(response?.msg || '获取上传地址失败');
     }
     return buildDirectUploadTarget(String(response.data));
   }, [canUploadToProject, projectId, resolveSlideId]);
@@ -545,7 +545,7 @@ export default function Editor({
         try {
           return JSON.parse(raw) as Record<string, string>;
         } catch (error) {
-          console.warn('[classic] 鐟欙絾鐎芥稉濠氼暯閼规彃銇戠拹?', error);
+          console.warn('[classic] 解析主题映射失败', error);
           return null;
         }
       }
@@ -572,7 +572,7 @@ export default function Editor({
         try {
           return JSON.parse(rawColors) as ThemeColors;
         } catch (error) {
-          console.warn('[classic] 鐟欙絾鐎芥稉濠氼暯閼规彃銇戠拹?', error);
+          console.warn('[classic] 解析主题颜色失败', error);
           return null;
         }
       }
@@ -586,7 +586,7 @@ export default function Editor({
         try {
           return JSON.parse(raw);
         } catch (error) {
-          console.warn('[classic] 鐟欙絾鐎?slideJson 婢惰精瑙?', error);
+          console.warn('[classic] 解析 slideJson 失败', error);
           return undefined;
         }
       })();
@@ -778,7 +778,7 @@ export default function Editor({
       try {
         return JSON.parse(raw);
       } catch (error) {
-        console.warn('[classic] 鐟欙絾鐎芥稉濠氼暯閼规彃銇戠拹?', error);
+        console.warn('[classic] 解析主题数据失败', error);
         return null;
       }
     };
@@ -950,7 +950,8 @@ export default function Editor({
                       className="flex flex-col gap-0 h-12 text-xs w-12"
                       onClick={() => setIsLayoutDrawerOpen(true)}
                     >
-                      鐢啫鐪?                    </Button>
+                      布局视图
+                    </Button>
                   )}
 
                   <Button
@@ -959,21 +960,24 @@ export default function Editor({
                     className="flex flex-col gap-0 h-12 text-xs w-12"
                     onClick={() => setIsBackgroundDrawerOpen(true)}
                   >
-                    閼冲本娅?                  </Button>
+                    背景
+                  </Button>
                   <Button
                     icon={<Icon icon="local:ppt/icon-magic" />}
                     type="text"
                     className="flex flex-col gap-0 h-12 text-xs w-12"
                     onClick={() => setIsTemplateDrawerOpen(true)}
                   >
-                    濡剝婢?                  </Button>
+                    模板
+                  </Button>
                   <Button
                     icon={<Icon icon="local:ppt/icon-palette" />}
                     type="text"
                     className="flex flex-col gap-0 h-12 text-xs w-12"
                     onClick={() => setIsThemeDrawerOpen(true)}
                   >
-                    娑撳顣?                  </Button>
+                    主题
+                  </Button>
                 </FloatButton.Group>
               </ConfigProvider>
             )}

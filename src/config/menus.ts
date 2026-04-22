@@ -1,6 +1,6 @@
 /**
- * 鍓嶇鑿滃崟閰嶇疆
- * 鏁版嵁缁撴瀯鍙傝€?SysRightPo锛屾敮鎸佸璇█
+ * 前端菜单配置
+ * 数据结构参考 SysRightPo，支持多语言
  */
 
 import { SysRightPo } from "@/models/sysRightPo";
@@ -30,7 +30,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
     rightName: 'Home',
     rightObject: 'menu',
     pageUrl: '/home',
-    description: '棣栭〉',
+    description: '首页',
     sortCode: 1,
     status: 1,
     icon: 'local:icon-home',
@@ -43,7 +43,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
         rightName: 'Home',
         rightObject: 'menu',
         pageUrl: '/home',
-        description: '棣栭〉',
+        description: '首页',
         sortCode: 1,
         status: 1,
         i18nKey: 'common.menus.home.index',
@@ -54,7 +54,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
         rightName: 'Product',
         rightObject: 'menu',
         pageUrl: '/home/product',
-        description: '浜у搧',
+        description: '产品',
         sortCode: 2,
         status: 1,
         i18nKey: 'common.menus.home.product',
@@ -65,7 +65,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
         rightName: 'Solution',
         rightObject: 'menu',
         pageUrl: '/home/solution',
-        description: '鏂规',
+        description: '方案',
         sortCode: 3,
         status: 1,
         i18nKey: 'common.menus.home.solution',
@@ -76,7 +76,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
         rightName: 'Pricing',
         rightObject: 'menu',
         pageUrl: '/home/pricing',
-        description: '瀹氫环',
+        description: '定价',
         sortCode: 4,
         status: 1,
         i18nKey: 'common.menus.home.pricing',
@@ -87,7 +87,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
         rightName: 'Partnership',
         rightObject: 'menu',
         pageUrl: '/home/partnership',
-        description: '鍚堜綔',
+        description: '合作',
         sortCode: 5,
         status: 1,
         i18nKey: 'common.menus.home.partnership',
@@ -100,7 +100,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
     rightName: 'PPT',
     rightObject: 'menu',
     pageUrl: '/ppt',
-    description: 'PPT缂栬緫',
+    description: 'PPT编辑',
     sortCode: 2,
     status: 1,
     icon: 'local:icon-ppt',
@@ -113,7 +113,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
         rightName: '鏂板缓PPT',
         rightObject: 'menu',
         pageUrl: '/ppt/new',
-        description: '鍒涘缓PPT',
+        description: '创建PPT',
         sortCode: 1,
         status: 1,
         icon: 'ant-design:plus-outlined',
@@ -128,7 +128,7 @@ export const frontendMenus: MenuItemWithChildren[] = [
         rightName: 'My Works',
         rightObject: 'menu',
         pageUrl: '/ppt/my-works',
-        description: '鎴戠殑浣滃搧',
+        description: '我的作品',
         sortCode: 2,
         status: 1,
         icon: 'local:icon-ppt-mywork',
