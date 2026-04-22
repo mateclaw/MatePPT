@@ -67,6 +67,11 @@ https://github.com/user-attachments/assets/c4a3d9df-6d97-42d7-8c4e-692a0f3813ee
 
 MatePPT 的定位不是单一编辑器内核，而是一套更接近产品前台的 AI PPT Web 应用。
 
+## 更新说明
+
+- 新增：模板广场、自定义模板上传与标注流程
+- 修复：本地开发环境登录、上传与接口代理问题
+
 它更适合这些场景：
 
 - AI PPT 生成产品前端

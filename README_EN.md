@@ -67,6 +67,11 @@ This address is intended for quickly experiencing the core workflow of the proje
 
 MatePPT is not positioned as a standalone editor kernel. It is closer to a product-facing AI PPT web application.
 
+## Updates
+
+- Added: template market, custom template upload, and annotation flow
+- Fixed: local development login, upload, and API proxy issues
+
 It is better suited for scenarios such as:
 
 - AI PPT product frontends
